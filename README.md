@@ -206,7 +206,7 @@ Durante el desarrollo se utilizarán ramas independientes para implementar nueva
 
 La nomenclatura prevista para las ramas será:
 
-- feature/nombre-funcionalidad
+- feat/nombre-funcionalidad
 - fix/nombre-error
 
 Una vez finalizado y comprobado el trabajo de una rama, los cambios se integrarán en ```main```.
