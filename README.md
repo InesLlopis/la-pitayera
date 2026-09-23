@@ -28,13 +28,13 @@ Ambas partes se comunicarán mediante una API REST utilizando JSON.
 
 ### Guía de estilo y diseño
 
-Se utilizará un sistema de pedido desarrollado específicamente para La Pitayera.
+Se utilizará un sistema de diseño desarrollado específicamente para La Pitayera.
 
 La interfaz buscará representar la temática natural y fresca asociada a la pitahaya, manteniendo una estructura visual clara y priorizando la usabilidad.
 
 Se utilizarán HTML5 y CSS3 para la estructura y presentación de la interfaz.
 
-El diseño será responsive para permitir el uso de la aplicación desde ordenadores, tables y dispositivos móviles.
+El diseño será responsive para permitir el uso de la aplicación desde ordenadores, tablets y dispositivos móviles.
 
 ---
 
@@ -200,3 +200,25 @@ La rama principal será:
 
 ```text
 main
+```
+
+Durante el desarrollo se utilizarán ramas independientes para implementar nuevas funcionalidades o realizar correcciones.
+
+La nomenclatura prevista para las ramas será:
+
+- feature/nombre-funcionalidad
+- fix/nombre-error
+
+Una vez finalizado y comprobado el trabajo de una rama, los cambios se integrarán en ```main```.
+
+### Convención de commits
+ Se utilizará una convención para identificar de forma clara el tipo de cambio realizado:
+
+ 
+ - feat: nueva funcionalidad
+ - fix: correción de errores
+ - docs: cambios en documentación
+ - refactor: modificación interna del código
+ - chore: configuración o mantenimiento
+ 
+
