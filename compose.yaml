@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - datos_mariadb:/var/lib/mysql
+
+  backend:
+    image: eclipse-temurin:21-jdk
+    working_dir: /app
+    command: ["sleep", "infinity"]
+
+  frontend:
+    image: node:22
+    working_dir: /app
+    command: ["sleep", "infinity"]
+
+volumes:
+  datos_mariadb:
