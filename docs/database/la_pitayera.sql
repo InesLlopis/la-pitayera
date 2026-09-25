@@ -1,7 +1,5 @@
 
--- =====================================================
 -- BASE DE DATOS: LA PITAYERA
--- =====================================================
 
 CREATE DATABASE IF NOT EXISTS la_pitayera
     CHARACTER SET utf8mb4
@@ -10,23 +8,19 @@ CREATE DATABASE IF NOT EXISTS la_pitayera
 USE la_pitayera;
 
 
--- =====================================================
 -- 1. TABLA: USUARIO
--- =====================================================
 
 CREATE TABLE USUARIO (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    rol ENUM('CLIENTE', 'ADMINISTRADOR')
+    rol ENUM('CLIENTE', 'ADMIN')
         NOT NULL DEFAULT 'CLIENTE'
 );
 
 
--- =====================================================
 -- 2. TABLA: CATEGORIA
--- =====================================================
 
 CREATE TABLE CATEGORIA (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,9 +29,7 @@ CREATE TABLE CATEGORIA (
 );
 
 
--- =====================================================
 -- 3. TABLA: PRODUCTO
--- =====================================================
 
 CREATE TABLE PRODUCTO (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,10 +53,8 @@ CREATE TABLE PRODUCTO (
 );
 
 
--- =====================================================
 -- 4. TABLA: CARRITO
 -- Un carrito por usuario
--- =====================================================
 
 CREATE TABLE CARRITO (
     id_carrito INT AUTO_INCREMENT PRIMARY KEY,
@@ -79,10 +69,8 @@ CREATE TABLE CARRITO (
 );
 
 
--- =====================================================
 -- 5. TABLA: DETALLE_CARRITO
 -- Productos incluidos en el carrito
--- =====================================================
 
 CREATE TABLE DETALLE_CARRITO (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
@@ -110,9 +98,7 @@ CREATE TABLE DETALLE_CARRITO (
 );
 
 
--- =====================================================
 -- 6. TABLA: PEDIDO
--- =====================================================
 
 CREATE TABLE PEDIDO (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
@@ -138,10 +124,8 @@ CREATE TABLE PEDIDO (
 );
 
 
--- =====================================================
 -- 7. TABLA: DETALLE_PEDIDO
 -- Productos incluidos en cada pedido
--- =====================================================
 
 CREATE TABLE DETALLE_PEDIDO (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
