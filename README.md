@@ -18,7 +18,7 @@ La aplicación contará también con un área privada para administradores, desd
 
 El proyecto se desarrolla como parte del Proyecto Intermodular de 2º curso del ciclo formativo de Desarrollo de Aplicaciones Web.
 
-La aplicación estará dividida en un frontend desarrollado con React y un backend desarrollado con Java 21 y Spring Boot.
+La aplicación estará dividida en un frontend desarrollado con React y un backend desarrollado con Python y Django.
 
 Ambas partes se comunicarán mediante una API REST utilizando JSON.
 
@@ -40,11 +40,11 @@ El diseño será responsive para permitir el uso de la aplicación desde ordenad
 
 ### Backend
 
-**Java 21 + Spring Boot**
+**Python + Django**
 
-Java 21 será utilizado como lenguaje principal del backend debido a que permite desarrollar una aplicación orientada a objetos y facilita la implementación de una arquitectura estructurada y mantenible.
+Python será el lenguaje principal del backend y Django el framework para construir la aplicación y su API.
 
-Spring Boot será utilizado como framework para desarrollar la API REST y gestionar los diferentes componentes del backend.
+Django REST Framework se utilizará para desarrollar la API REST. Django ORM gestionará el acceso a MariaDB y las migraciones del esquema.
 
 Se utilizará una arquitectura por capas para separar las responsabilidades de los controladores, servicios y acceso a datos.
 
@@ -111,13 +111,13 @@ Entre los datos que se almacenarán se encuentran:
 - Pedidos.
 - Líneas de pedido.
 
-El acceso a la base de datos desde el backend se realizará mediante Spring Data JPA y Hibernate.
+El acceso a la base de datos desde el backend se realizará mediante Django ORM y un conector compatible con MariaDB.
 
 ---
 
 ## Seguridad
 
-La aplicación utilizará **Spring Security** para gestionar la autenticación y autorización.
+La autenticación y autorización se implementarán con Django y Django REST Framework.
 
 La autenticación se realizará mediante **JWT (JSON Web Token)**.
 
@@ -128,7 +128,7 @@ Se establecerán diferentes roles de usuario, principalmente:
 
 Las operaciones de administración estarán protegidas para impedir el acceso de usuarios que no dispongan de los permisos necesarios.
 
-Las contraseñas de los usuarios no se almacenarán directamente, sino que se utilizará un sistema de hash seguro mediante BCrypt.
+Las contraseñas se almacenarán mediante el sistema de hash seguro integrado en Django.
 
 ---
 
@@ -161,7 +161,7 @@ La API utilizará los métodos HTTP correspondientes según la operación realiz
 La documentación del proyecto se realizará principalmente mediante:
 
 - README.md para la documentación general del repositorio.
-- Javadoc para documentar elementos relevantes del backend.
+- Docstrings de Python para documentar elementos relevantes del backend.
 - JSDoc cuando resulte útil en el frontend.
 - Documentación de la API mediante OpenAPI/Swagger.
 
@@ -173,14 +173,12 @@ La documentación se irá ampliando a medida que avance el desarrollo.
 
 ### Backend
 
-- Spring Web
-- Spring Data JPA
-- Spring Security
-- JWT
-- Hibernate
-- Bean Validation
-- MariaDB Driver
-- Maven
+- Django
+- Django REST Framework
+- Simple JWT
+- Django ORM
+- mysqlclient (conector para MariaDB)
+- drf-spectacular (documentación OpenAPI)
 
 ### Frontend
 

@@ -7,11 +7,14 @@
 *.iml
 
 # =========================
-# Java / Maven
+# Python / Django
 # =========================
 
-target/
-*.class
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+venv/
 
 # =========================
 # Node / React
