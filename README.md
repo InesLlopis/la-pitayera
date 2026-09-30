@@ -161,6 +161,7 @@ La API utilizará los métodos HTTP correspondientes según la operación realiz
 La documentación del proyecto se realizará principalmente mediante:
 
 - README.md para la documentación general del repositorio.
+- [Guía de estilo](docs/guia-estilo.md) para la identidad visual y los criterios de interfaz. El diseño editable está en [Figma](https://www.figma.com/design/x9jdm0klpScIKnZ5HgtYSC).
 - Docstrings de Python para documentar elementos relevantes del backend.
 - JSDoc cuando resulte útil en el frontend.
 - Documentación de la API mediante OpenAPI/Swagger.
