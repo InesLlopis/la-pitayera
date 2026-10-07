@@ -219,5 +219,104 @@ Una vez finalizado y comprobado el trabajo de una rama, los cambios se integrar�
  - docs: cambios en documentación
  - refactor: modificación interna del código
  - chore: configuración o mantenimiento
- 
 
+---
+
+## Entorno Docker Compose
+
+El entorno incluye MariaDB, Django y React servido por Nginx. Ejecuta los comandos desde la raíz del proyecto, junto a `compose.yaml`.
+
+### Requisitos
+
+- Docker Desktop o Docker Engine con Docker Compose v2, en ejecución.
+- Git, si necesitas clonar el repositorio.
+
+Comprueba la instalación:
+
+```bash
+docker --version
+docker compose version
+```
+
+### Preparar `.env`
+
+Copia la plantilla y edita las contraseñas y la clave secreta:
+
+```bash
+cp .env.example .env
+```
+
+En PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Cambia `MARIADB_ROOT_PASSWORD`, `MARIADB_PASSWORD` y `DJANGO_SECRET_KEY` por valores propios. No compartas `.env` ni lo subas al repositorio: `.gitignore` ya lo excluye. Mantén los demás nombres de base, usuario y ajustes salvo que necesites cambiarlos. Django se conecta a MariaDB mediante `db:3306`; desde tu equipo, MariaDB se publica en `127.0.0.1:3307`.
+
+### Construir e iniciar
+
+```bash
+docker compose up --build -d
+```
+
+El backend espera a que MariaDB esté saludable y ejecuta las migraciones al arrancar. Consulta el estado y, si hace falta, los registros:
+
+```bash
+docker compose ps
+docker compose logs -f
+```
+
+Para ver un servicio concreto, añade su nombre, por ejemplo `docker compose logs -f backend`. `Ctrl+C` deja de mostrar los registros, pero no detiene los contenedores.
+
+### Acceso a los servicios
+
+| Servicio | Dirección / conexión |
+| --- | --- |
+| Frontend | <http://localhost:3000> |
+| Backend Django | <http://localhost:8000/admin/> |
+| MariaDB | Host `127.0.0.1`, puerto `3307`; usa la base de datos, usuario y contraseña de `.env`. |
+
+La configuración actual solo registra `/admin/`; todavía no hay endpoints de API. Crea una cuenta de administración una vez para acceder al panel:
+
+```bash
+docker compose exec backend python manage.py createsuperuser
+```
+
+También puedes abrir la consola de MariaDB dentro del contenedor:
+
+```bash
+docker compose exec db mariadb -u pitayera_app -p la_pitayera
+```
+
+Introduce la contraseña de `MARIADB_PASSWORD` y escribe `exit` para salir. Si cambiaste `MARIADB_USER` o `MARIADB_DATABASE`, actualiza `pitayera_app` o `la_pitayera` en el comando.
+
+### Estado del frontend
+
+`frontend/` ya contiene la base de React y Vite. Docker la compila y Nginx la sirve en el puerto `3000`, pero el catálogo y las funcionalidades de la tienda aún están pendientes. Para reconstruirla tras hacer cambios:
+
+```bash
+docker compose up --build -d frontend
+```
+
+### Detener y eliminar
+
+Detener y conservar los datos:
+
+```bash
+docker compose stop
+```
+
+Reanudar los contenedores con `docker compose start`. Para eliminar contenedores y red, conservando la base de datos:
+
+```bash
+docker compose down
+```
+
+Para borrar también el volumen y todos los datos de MariaDB:
+
+```bash
+docker compose down -v
+```
+
+El SQL `docs/database/la_pitayera.sql` se importa solo al inicializar un volumen vacío. Elimínalo con `down -v` únicamente si quieres reiniciar la base de datos desde cero.
