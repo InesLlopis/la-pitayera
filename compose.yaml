@@ -1,6 +1,7 @@
 services:
   db:
     image: mariadb:11.4
+    restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       MARIADB_DATABASE: ${MARIADB_DATABASE}
@@ -10,20 +11,42 @@ services:
       - "3307:3306"
     volumes:
       - datos_mariadb:/var/lib/mysql
+      - ./docs/database/la_pitayera.sql:/docker-entrypoint-initdb.d/la_pitayera.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   backend:
-    image: python:3.12-slim
+    build: ./backend
+    restart: unless-stopped
     working_dir: /app
-    command: ["sleep", "infinity"]
     volumes:
       - ./backend:/app
     ports:
       - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      MARIADB_HOST: db
+      MARIADB_PORT: 3306
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
 
   frontend:
-    image: node:22
-    working_dir: /app
-    command: ["sleep", "infinity"]
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
 
 volumes:
   datos_mariadb:
