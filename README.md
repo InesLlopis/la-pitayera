@@ -134,25 +134,57 @@ Las contraseñas se almacenarán mediante el sistema de hash seguro integrado en
 
 ## API REST
 
-La comunicación entre el frontend y el backend se realizará mediante una API REST.
+La comunicación entre el frontend desarrollado con React y el backend desarrollado con Django se realizará mediante una API REST. Los datos se intercambiarán en formato JSON.
 
-Los datos se intercambiarán utilizando JSON.
+La API se organizará mediante rutas agrupadas por funcionalidad, con el objetivo de mantener una estructura modular y facilitar la incorporación de nuevos endpoints.
 
-Algunos de los recursos previstos serán:
+### Estado de implementación
 
-- `/api/auth`
-- `/api/users`
-- `/api/products`
-- `/api/categories`
-- `/api/cart`
-- `/api/orders`
+| Método | Endpoint | Descripción | Estado |
+|---|---|---|---|
+| GET | `/api/health/` | Comprueba que el backend responde correctamente. | Implementado |
+| GET | `/api/products/` | Consulta el catálogo de productos. | Pendiente |
+| GET | `/api/categories/` | Consulta las categorías de productos. | Pendiente |
+| POST | `/api/auth/register/` | Registra un usuario. | Pendiente |
+| POST | `/api/auth/login/` | Autentica a un usuario. | Pendiente |
+| GET | `/api/orders/` | Consulta los pedidos. | Pendiente |
 
-La API utilizará los métodos HTTP correspondientes según la operación realizada:
+Los endpoints pendientes representan las funcionalidades previstas y podrán ajustarse durante el desarrollo.
 
-- GET
-- POST
-- PUT
-- DELETE
+### Comprobación del estado del servidor
+
+El endpoint `GET /api/health/` permite verificar que el servidor Django está levantado y responde a las peticiones HTTP.
+
+**URL local:** `http://localhost:8000/api/health/`
+
+**Respuesta de ejemplo:**
+
+```json
+{
+  "status": "ok",
+  "message": "La Pitayera está funcionando"
+}
+```
+
+Este endpoint no consulta la base de datos ni comprueba la disponibilidad de otros servicios. Su finalidad actual es verificar que el backend responde correctamente.
+
+### Métodos HTTP
+
+La API utilizará los métodos HTTP según la operación realizada:
+
+- `GET`: consultar recursos.
+- `POST`: crear recursos o realizar operaciones de autenticación.
+- `PUT`: actualizar recursos.
+- `PATCH`: actualizar parcialmente un recurso, cuando sea necesario.
+- `DELETE`: eliminar recursos.
+
+### Organización de las rutas
+
+Las rutas de la API se registran en la configuración de Django y se agrupan por funcionalidad. Las vistas gestionan las peticiones HTTP y generan las respuestas correspondientes.
+
+La API se ampliará progresivamente para incorporar las funcionalidades de autenticación, gestión de usuarios, catálogo de productos, categorías, carrito y pedidos.
+
+La documentación técnica de los endpoints se mantendrá junto al código y se ampliará con documentación OpenAPI/Swagger cuando se configure la infraestructura correspondiente.
 
 ---
 
