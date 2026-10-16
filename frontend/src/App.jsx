@@ -2,32 +2,46 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [health, setHealth] = useState(null)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    fetch('/api/health/')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Respuesta HTTP ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(setHealth)
-      .catch((requestError) => {
-        setError(requestError.message)
-      })
-  }, [])
-
   return (
-    <main>
-      <h1>La Pitayera</h1>
-      <p>Comprobación de conexión con el backend</p>
+    <div className='landing'>
+      <header className='site-header'>
+        <a className='brand' href="#inicio">
+          <span className='brand-mark' aria-hidden="true">✿</span>
+          <span>La Pitayera</span>
+        </a>
 
-      {error && <p role="alert">No se pudo conectar: {error}</p>}
-      {!health && !error && <p>Consultando el estado…</p>}
-      {health && <pre>{JSON.stringify(health, null, 2)}</pre>}
-    </main>
+        <span className='status'>
+          <span className='status-dot' aria-hidden="true" />
+          Estamos preparando la web
+        </span>
+      </header>
+
+      <main className='hero' id='inicio'>
+        <section className='hero-copy'>
+          <p className='eyebrow'>FRUTA FRESCA, MUY PRONTO</p>
+          <h1>Una nueva forma de descubir <span>fruta.</span></h1>
+          <p className='description'>
+            Estamos preparando La Pitayera. Muy pronto podrás descubrir nuestra selección de pitahayas y otras frutas.
+          </p>
+          <p className='coming-soon'>
+            <span aria-hidden="true">✦</span>
+            Nuestra tienda abrirá pronto
+          </p>
+        </section>
+
+        <div className='fruit-art' aria-hidden="true">
+          <div className='fruit-orbit orbit-one'/>
+          <div className='fruit-orbit orbit-two'/>
+          <span className='dragon-fruit'>🐉</span>
+          <span className='grapes'>🍇</span>
+          <span className='fruit-label'>Color · Sabor · Frescura</span>
+        </div>
+      </main>
+
+      <footer className='site-footer'>
+        La Pitayera <span aria-hiden="true">·</span> En construcción
+      </footer>
+    </div>
   )
 }
 
