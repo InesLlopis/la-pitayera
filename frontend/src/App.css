@@ -10,6 +10,7 @@
   --ink: #292522;
   --ink-muted: #6F6963;
   --border: #E8DED4;
+  --error: #B42332;
 
   font-family: "Inter", Arial, sans-serif;
   color: var(--ink);
@@ -89,6 +90,36 @@ body {
   height: 8px;
   border-radius: 50%;
   background: var(--leaf);
+}
+
+.status--connected {
+  color: var(--leaf);
+  border-color: var(--border);
+  background: var(--leaf-soft);
+}
+
+.status--connected .status-dot {
+  background: var(--leaf);
+}
+
+.status--disconnected {
+  color: var(--error);
+  border-color: var(--error);
+  background: var(--white);
+}
+
+.status--disconnected .status-dot {
+  background: var(--error);
+}
+
+.status--checking {
+  color: var(--ink-muted);
+  border-color: var(--border);
+  background: var(--white);
+}
+
+.status--checking .status-dot {
+  background: var(--ink-muted);
 }
 
 .hero {

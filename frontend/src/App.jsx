@@ -2,6 +2,45 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
+  const [serverStatus, setServerStatus] = useState('checking')
+
+  useEffect(() => {
+    let componentIsMounted = true
+
+    const checkServer = async () => {
+      try {
+        const response = await fetch('/api/health/', { cache: 'no-store' })
+        const data = await response.json()
+
+        if (!response.ok || data.status !== 'ok') {
+          throw new Error('El backend no está disponible')
+        }
+
+        if (componentIsMounted) {
+          setServerStatus('connected')
+        }
+      } catch {
+        if (componentIsMounted) {
+          setServerStatus('disconnected')
+        }
+      }
+    }
+
+    checkServer()
+    const intervalId = window.setInterval(checkServer, 5000)
+
+    return () => {
+      componentIsMounted = false
+      window.clearInterval(intervalId)
+    }
+  }, [])
+
+  const statusText =
+    serverStatus === 'connected'
+      ? 'Servidor conectado'
+      : serverStatus === 'disconnected'
+        ? 'Servidor desconectado'
+        : 'Comprobando servidor…'
   return (
     <div className='landing'>
       <header className='site-header'>
@@ -10,9 +49,13 @@ function App() {
           <span>La Pitayera</span>
         </a>
 
-        <span className='status'>
-          <span className='status-dot' aria-hidden="true" />
-          Estamos preparando la web
+        <span
+          className={`status status--${serverStatus}`}
+          role="status"
+          aria-live="polite"
+        >
+          <span className="status-dot" aria-hidden="true" />
+          {statusText}
         </span>
       </header>
 
@@ -30,8 +73,8 @@ function App() {
         </section>
 
         <div className='fruit-art' aria-hidden="true">
-          <div className='fruit-orbit orbit-one'/>
-          <div className='fruit-orbit orbit-two'/>
+          <div className='fruit-orbit orbit-one' />
+          <div className='fruit-orbit orbit-two' />
           <span className='dragon-fruit'>🐉</span>
           <span className='grapes'>🍇</span>
           <span className='fruit-label'>Color · Sabor · Frescura</span>
