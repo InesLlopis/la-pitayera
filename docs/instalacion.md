@@ -97,6 +97,8 @@ Las capturas de la comprobación del hito 1 se guardan en `docs/capturas/`.
 
 - `hito1BackendHealth.png`: respuesta del endpoint de salud del backend.
 - `hito1Integración.png`: frontend mostrando la respuesta recibida del backend.
+- `hito1ServidorConectado.png`: frontend mostrando el estado conectado y Django registrando respuestas HTTP 200.
+- `hito1ServidorDesconectado.png`: frontend mostrando el estado desconectado tras detener Django.
 
 ## Problemas encontrados y soluciones
 
