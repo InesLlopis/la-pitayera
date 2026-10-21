@@ -5,7 +5,9 @@ Tienda online de pitahayas - Proyecto Intermodular de 2º DAW.
 ## Autoría
 
 **Alumna**: Inés Llopis Martínez
+
 **Centro**: IES Severo Ochoa - Elche
+
 **Curso**: 2026/2027
 
 ## Descripción
