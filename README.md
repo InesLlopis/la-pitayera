@@ -1,356 +1,109 @@
 # La Pitayera
 
-Tienda online de pitahayas - Proyecto Intermodular de 2º DAW.
+**Tienda online de pitahayas — Anteproyecto de 2.º DAW**
 
-## Autoría
+## 1. Datos del proyecto
 
-**Alumna**: Inés Llopis Martínez
+- **Autora:** Inés Llopis Martínez
+- **Centro educativo:** IES Severo Ochoa — Elche
+- **Ciclo formativo:** Desarrollo de Aplicaciones Web (DAW)
+- **Curso académico:** 2026/2027
 
-**Centro**: IES Severo Ochoa - Elche
+## 2. Descripción de la aplicación
 
-**Curso**: 2026/2027
+La Pitayera será una aplicación web de comercio electrónico especializada en la venta de pitahayas, también conocidas como frutas del dragón.
 
-## Descripción
+La aplicación permitirá a los usuarios consultar un catálogo de productos, registrarse e iniciar sesión, gestionar un carrito de compra y realizar pedidos.
 
-La Pitayera es una aplicación web Fullstack de comercio electrónico especializada en la venta de pitahayas.
+También contará con una zona privada de administración desde la que los usuarios autorizados podrán gestionar los productos, las categorías, el inventario, los usuarios y los pedidos.
 
-El objetivo del proyecto es desarrollar una plataforma que permita a los usuarios consultar un catálogo de productos, registrarse e iniciar sesión, gestionar un carrito de compra y realizar pedidos.
+El proyecto busca centralizar en una misma plataforma la consulta de productos y la gestión de compras de una tienda especializada.
 
-La aplicación contará también con un área privada para administradores, desde la que será posible gestionar los productos, el stock, los usuarios y los pedidos.
+## 3. Objetivos
 
-El proyecto se desarrolla como parte del Proyecto Intermodular de 2º curso del ciclo formativo de Desarrollo de Aplicaciones Web.
+Los objetivos principales del proyecto son:
 
-La aplicación estará dividida en un frontend desarrollado con React y un backend desarrollado con Python y Django.
+- Desarrollar una aplicación web de comercio electrónico especializada en pitahayas.
+- Ofrecer un catálogo donde consultar los productos y sus características.
+- Permitir el registro y la autenticación de usuarios.
+- Facilitar la gestión del carrito de compra y de los pedidos.
+- Incorporar una zona de administración para gestionar productos, categorías, inventario, usuarios y pedidos.
+- Restringir las operaciones administrativas a los usuarios que dispongan del rol y los permisos correspondientes.
+- Diseñar una interfaz clara, intuitiva y adaptable a ordenadores, tablets y móviles.
+- Aplicar los conocimientos adquiridos en el ciclo de Desarrollo de Aplicaciones Web.
 
-Ambas partes se comunicarán mediante una API REST utilizando JSON.
+## 4. Temática
 
----
+La temática del proyecto es el comercio electrónico de productos alimentarios, concretamente la venta de pitahayas.
 
-## Tecnologías
+La identidad visual se inspirará en la naturaleza y en las características de esta fruta, con una estética fresca y moderna. La interfaz priorizará la claridad, la usabilidad y la facilidad de navegación.
 
-### Guía de estilo y diseño
-
-Se utilizará un sistema de diseño desarrollado específicamente para La Pitayera.
-
-La interfaz buscará representar la temática natural y fresca asociada a la pitahaya, manteniendo una estructura visual clara y priorizando la usabilidad.
-
-Se utilizarán HTML5 y CSS3 para la estructura y presentación de la interfaz.
-
-El diseño será responsive para permitir el uso de la aplicación desde ordenadores, tablets y dispositivos móviles.
-
----
+## 5. Tecnologías previstas
 
 ### Backend
 
-**Python + Django**
+- **Python:** lenguaje de programación previsto para el backend.
+- **Django:** framework para desarrollar la aplicación.
+- **Django REST Framework:** previsto para construir una API REST y permitir la comunicación con el frontend mediante JSON.
 
-Python será el lenguaje principal del backend y Django el framework para construir la aplicación y su API.
-
-Django REST Framework se utilizará para desarrollar la API REST. Django ORM gestionará el acceso a MariaDB y las migraciones del esquema.
-
-Se utilizará una arquitectura por capas para separar las responsabilidades de los controladores, servicios y acceso a datos.
-
-El backend será responsable de:
-- Gestionar los usuarios.
-- Gestionar la autenticación.
-- Gestionar la autorización mediante roles.
-- Gestionar los productos.
-- Gestionar el stock.
-- Gestionar los carritos.
-- Gestionar los pedidos.
-- Aplicar las reglas de negocio.
-- Validar los datos recibidos.
-- Gestionar el acceso a la base de datos.
-
----
+El backend gestionará la lógica de negocio, los datos y el control de acceso a las operaciones protegidas.
 
 ### Frontend
 
-**React + Vite**
-
-React será utilizado para desarrollar la interfaz de usuario mediante componentes reutilizables.
-
-La elección de React permitirá separar la aplicación en diferentes componentes y gestionar de forma estructurada el estado de la interfaz.
-
-Vite será utilizado como herramienta de desarrollo y construcción del frontend debido a su integración con React y a su rapidez durante el desarrollo.
-
-Se utilizarán también:
-
-- React Router para la navegación.
-- JavaScript para la lógica del frontend.
-- HTML5 para la estructura.
-- CSS3 para los estilos.
-
-El frontend será responsable de:
-
-- Mostrar el catálogo.
-- Mostrar los detalles de los productos.
-- Gestionar el registro y login.
-- Gestionar el carrito.
-- Mostrar el proceso de compra.
-- Mostrar los pedidos del usuario.
-- Gestionar la interfaz del administrador.
-
----
+- **React:** desarrollo de la interfaz mediante componentes reutilizables.
+- **Vite:** herramienta de desarrollo y construcción.
+- **JavaScript, HTML5 y CSS3:** lógica, estructura y presentación de la interfaz.
+- **React Router:** navegación entre las vistas de la aplicación.
 
 ### Base de datos
 
-**MariaDB**
+- **MariaDB:** sistema gestor de base de datos relacional previsto para almacenar la información de la tienda.
 
-Se utilizará MariaDB como sistema gestor de base de datos relacional.
+### Entorno de ejecución
 
-Se ha elegido una base de datos relacional debido a que el proyecto contiene diferentes entidades relacionadas entre sí, como usuarios, productos, pedidos y líneas de pedido.
+- **Docker y Docker Compose:** previstos para facilitar la configuración y ejecución conjunta de los servicios de la aplicación.
 
-Las relaciones entre estas entidades son importantes para garantizar la integridad y consistencia de la información.
+Estas tecnologías constituyen la propuesta inicial y podrán concretarse durante la planificación posterior a la aprobación del anteproyecto.
 
-Entre los datos que se almacenarán se encuentran:
+## 6. Esquema entidad-relación (E/R)
 
-- Usuarios.
-- Roles.
-- Productos.
-- Categorías.
-- Stock.
-- Pedidos.
-- Líneas de pedido.
+El modelo de datos inicial se basa en los nueve modelos definidos actualmente en los archivos de modelos del proyecto. El esquema E/R que acompañe al anteproyecto deberá representar las entidades, sus atributos, las claves y las cardinalidades.
 
-El acceso a la base de datos desde el backend se realizará mediante Django ORM y un conector compatible con MariaDB.
+### 6.1. Entidades actuales
 
----
+| Entidad | Atributos definidos actualmente |
+|---|---|
+| **Cliente** | `id` (clave primaria implícita de Django), `nombre`, `apellidos`, `nif` (único), `email` (único). |
+| **Factura** | `id` (clave primaria implícita), `cliente` (FK a Cliente), `n_factura` (único), `concepto`, `fecha`, `total`. |
+| **Cobro** | `id` (clave primaria implícita), `factura` (relación uno a uno con Factura), `fecha`, `importe`. |
+| **Categoria** | `id` (clave primaria implícita), `nombre`, `descripcion`. |
+| **Producto** | `id` (clave primaria implícita), `nombre`, `categoria` (FK a Categoria), `descripcion`, `precio`. |
+| **Pedido** | `id` (clave primaria implícita), `cliente` (FK a Cliente), `n_pedido` (único), `fecha`, `total`. |
+| **DetallePedido** | `id` (clave primaria implícita), `pedido` (FK a Pedido), `producto` (FK a Producto), `cantidad`, `precio_unitario`. |
+| **MovimientoInventario** | `id` (clave primaria implícita), `producto` (FK a Producto), `fecha`, `cantidad`. |
+| **TipoMovimiento** | `id` (clave primaria implícita), `movimiento` (FK a MovimientoInventario), `nombre`, `motivo`. |
 
-## Seguridad
+Los campos `id` corresponden a las claves primarias que Django crea por defecto cuando no se declara una clave primaria explícita. Las relaciones `ForeignKey` corresponden a claves foráneas. `Cobro.factura` utiliza una relación `OneToOneField`.
 
-La autenticación y autorización se implementarán con Django y Django REST Framework.
+### 6.2. Relaciones definidas en los modelos
 
-La autenticación se realizará mediante **JWT (JSON Web Token)**.
+- **Cliente — Factura:** un cliente puede tener varias facturas; cada factura está asociada a un cliente.
+- **Factura — Cobro:** relación uno a uno entre Factura y Cobro.
+- **Cliente — Pedido:** un cliente puede tener varios pedidos; cada pedido está asociado a un cliente.
+- **Categoria — Producto:** una categoría puede tener varios productos; cada producto está asociado a una categoría.
+- **Pedido — DetallePedido:** un pedido puede tener varias líneas de detalle; cada línea corresponde a un pedido.
+- **Producto — DetallePedido:** un producto puede aparecer en varias líneas de detalle; cada línea corresponde a un producto.
+- **Producto — MovimientoInventario:** un producto puede tener varios movimientos de inventario; cada movimiento corresponde a un producto.
+- **MovimientoInventario — TipoMovimiento:** un movimiento puede tener varios registros asociados; cada registro de TipoMovimiento referencia un movimiento.
 
-Se establecerán diferentes roles de usuario, principalmente:
+**Diagrama E/R:** pendiente de incorporar como diagrama gráfico a este documento antes de la entrega.
 
-- Cliente.
-- Administrador.
+El modelo descrito corresponde al estado actual de los archivos. Podrán añadirse o modificarse modelos si las necesidades del desarrollo lo requieren, una vez autorizado el inicio del proyecto.
 
-Las operaciones de administración estarán protegidas para impedir el acceso de usuarios que no dispongan de los permisos necesarios.
+## 7. Administración y control de acceso
 
-Las contraseñas se almacenarán mediante el sistema de hash seguro integrado en Django.
+La aplicación incluirá una zona privada de administración, accesible únicamente a usuarios con el rol y los permisos correspondientes.
 
----
+Esta zona permitirá gestionar los productos, las categorías, el inventario, los usuarios y los pedidos. Los clientes utilizarán las funcionalidades públicas de la tienda y las opciones asociadas a su cuenta y sus compras.
 
-## API REST
-
-La comunicación entre el frontend desarrollado con React y el backend desarrollado con Django se realizará mediante una API REST. Los datos se intercambiarán en formato JSON.
-
-La API se organizará mediante rutas agrupadas por funcionalidad, con el objetivo de mantener una estructura modular y facilitar la incorporación de nuevos endpoints.
-
-### Estado de implementación
-
-| Método | Endpoint | Descripción | Estado |
-|---|---|---|---|
-| GET | `/api/health/` | Comprueba que el backend responde correctamente. | Implementado |
-| GET | `/api/products/` | Consulta el catálogo de productos. | Pendiente |
-| GET | `/api/categories/` | Consulta las categorías de productos. | Pendiente |
-| POST | `/api/auth/register/` | Registra un usuario. | Pendiente |
-| POST | `/api/auth/login/` | Autentica a un usuario. | Pendiente |
-| GET | `/api/orders/` | Consulta los pedidos. | Pendiente |
-
-Los endpoints pendientes representan las funcionalidades previstas y podrán ajustarse durante el desarrollo.
-
-### Comprobación del estado del servidor
-
-El endpoint `GET /api/health/` permite verificar que el servidor Django está levantado y responde a las peticiones HTTP.
-
-**URL local:** `http://localhost:8000/api/health/`
-
-**Respuesta de ejemplo:**
-
-```json
-{
-  "status": "ok",
-  "message": "La Pitayera está funcionando"
-}
-```
-
-Este endpoint no consulta la base de datos ni comprueba la disponibilidad de otros servicios. Su finalidad actual es verificar que el backend responde correctamente.
-
-### Métodos HTTP
-
-La API utilizará los métodos HTTP según la operación realizada:
-
-- `GET`: consultar recursos.
-- `POST`: crear recursos o realizar operaciones de autenticación.
-- `PUT`: actualizar recursos.
-- `PATCH`: actualizar parcialmente un recurso, cuando sea necesario.
-- `DELETE`: eliminar recursos.
-
-### Organización de las rutas
-
-Las rutas de la API se registran en la configuración de Django y se agrupan por funcionalidad. Las vistas gestionan las peticiones HTTP y generan las respuestas correspondientes.
-
-La API se ampliará progresivamente para incorporar las funcionalidades de autenticación, gestión de usuarios, catálogo de productos, categorías, carrito y pedidos.
-
-La documentación técnica de los endpoints se mantendrá junto al código y se ampliará con documentación OpenAPI/Swagger cuando se configure la infraestructura correspondiente.
-
----
-
-## Documentación
-
-La documentación del proyecto se realizará principalmente mediante:
-
-- README.md para la documentación general del repositorio.
-- [Guía de estilo](docs/guia-estilo.md) para la identidad visual y los criterios de interfaz. El diseño editable está en [Figma](https://www.figma.com/design/x9jdm0klpScIKnZ5HgtYSC).
-- Docstrings de Python para documentar elementos relevantes del backend.
-- JSDoc cuando resulte útil en el frontend.
-- Documentación de la API mediante OpenAPI/Swagger.
-
-La documentación se irá ampliando a medida que avance el desarrollo.
-
----
-
-## Librerías y dependencias relevantes
-
-### Backend
-
-- Django
-- Django REST Framework
-- Simple JWT
-- Django ORM
-- mysqlclient (conector para MariaDB)
-- drf-spectacular (documentación OpenAPI)
-
-### Frontend
-
-- React
-- React Router
-- Vite
-
-Las dependencias definitivas podrán ampliarse durante el desarrollo cuando sea necesario incorporar nuevas funcionalidades.
-
----
-
-## Control de versiones
-
-El proyecto utilizará **Git** como sistema de control de versiones y **GitHub** como plataforma para alojar el repositorio.
-
-La rama principal será:
-
-```text
-main
-```
-
-Durante el desarrollo se utilizarán ramas independientes para implementar nuevas funcionalidades o realizar correcciones.
-
-La nomenclatura prevista para las ramas será:
-
-- feat/nombre-funcionalidad
-- fix/nombre-error
-
-Una vez finalizado y comprobado el trabajo de una rama, los cambios se integrarán en ```main```.
-
-### Convención de commits
- Se utilizará una convención para identificar de forma clara el tipo de cambio realizado:
-
- 
- - feat: nueva funcionalidad
- - fix: correción de errores
- - docs: cambios en documentación
- - refactor: modificación interna del código
- - chore: configuración o mantenimiento
-
----
-
-## Entorno Docker Compose
-
-El entorno incluye MariaDB, Django y React servido por Nginx. Ejecuta los comandos desde la raíz del proyecto, junto a `compose.yaml`.
-
-### Requisitos
-
-- Docker Desktop o Docker Engine con Docker Compose v2, en ejecución.
-- Git, si necesitas clonar el repositorio.
-
-Comprueba la instalación:
-
-```bash
-docker --version
-docker compose version
-```
-
-### Preparar `.env`
-
-Copia la plantilla y edita las contraseñas y la clave secreta:
-
-```bash
-cp .env.example .env
-```
-
-En PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Cambia `MARIADB_ROOT_PASSWORD`, `MARIADB_PASSWORD` y `DJANGO_SECRET_KEY` por valores propios. No compartas `.env` ni lo subas al repositorio: `.gitignore` ya lo excluye. Mantén los demás nombres de base, usuario y ajustes salvo que necesites cambiarlos. Django se conecta a MariaDB mediante `db:3306`; desde tu equipo, MariaDB se publica en `127.0.0.1:3307`.
-
-### Construir e iniciar
-
-```bash
-docker compose up --build -d
-```
-
-El backend espera a que MariaDB esté saludable y ejecuta las migraciones al arrancar. Consulta el estado y, si hace falta, los registros:
-
-```bash
-docker compose ps
-docker compose logs -f
-```
-
-Para ver un servicio concreto, añade su nombre, por ejemplo `docker compose logs -f backend`. `Ctrl+C` deja de mostrar los registros, pero no detiene los contenedores.
-
-### Acceso a los servicios
-
-| Servicio | Dirección / conexión |
-| --- | --- |
-| Frontend | <http://localhost:3000> |
-| Backend Django | <http://localhost:8000/admin/> |
-| MariaDB | Host `127.0.0.1`, puerto `3307`; usa la base de datos, usuario y contraseña de `.env`. |
-
-La configuración actual solo registra `/admin/`; todavía no hay endpoints de API. Crea una cuenta de administración una vez para acceder al panel:
-
-```bash
-docker compose exec backend python manage.py createsuperuser
-```
-
-También puedes abrir la consola de MariaDB dentro del contenedor:
-
-```bash
-docker compose exec db mariadb -u pitayera_app -p la_pitayera
-```
-
-Introduce la contraseña de `MARIADB_PASSWORD` y escribe `exit` para salir. Si cambiaste `MARIADB_USER` o `MARIADB_DATABASE`, actualiza `pitayera_app` o `la_pitayera` en el comando.
-
-### Estado del frontend
-
-`frontend/` ya contiene la base de React y Vite. Docker la compila y Nginx la sirve en el puerto `3000`, pero el catálogo y las funcionalidades de la tienda aún están pendientes. Para reconstruirla tras hacer cambios:
-
-```bash
-docker compose up --build -d frontend
-```
-
-### Detener y eliminar
-
-Detener y conservar los datos:
-
-```bash
-docker compose stop
-```
-
-Reanudar los contenedores con `docker compose start`. Para eliminar contenedores y red, conservando la base de datos:
-
-```bash
-docker compose down
-```
-
-Para borrar también el volumen y todos los datos de MariaDB:
-
-```bash
-docker compose down -v
-```
-
-El SQL `docs/database/la_pitayera.sql` se importa solo al inicializar un volumen vacío. Elimínalo con `down -v` únicamente si quieres reiniciar la base de datos desde cero.
+El control de acceso se implementará en el backend para impedir que usuarios no autorizados realicen operaciones administrativas. La solución concreta de autenticación y autorización se definirá durante el diseño técnico posterior a la aprobación.
