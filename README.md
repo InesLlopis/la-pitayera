@@ -107,3 +107,7 @@ La aplicación incluirá una zona privada de administración, accesible únicame
 Esta zona permitirá gestionar los productos, las categorías, el inventario, los usuarios y los pedidos. Los clientes utilizarán las funcionalidades públicas de la tienda y las opciones asociadas a su cuenta y sus compras.
 
 El control de acceso se implementará en el backend para impedir que usuarios no autorizados realicen operaciones administrativas. La solución concreta de autenticación y autorización se definirá durante el diseño técnico posterior a la aprobación.
+
+## 8. Enlace a ClickUp
+
+https://app.clickup.com/1500510000002045/v/dc/1ampjurgczx-512/1ampjurgczx-72
