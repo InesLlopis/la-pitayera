@@ -3,29 +3,57 @@
 ## Producto
 - id
 - nombre
-- tipo
+- categoria
 - descripcion
 - precio
 
+## Categoria
+- id PK
+- nombre
+- descripcion
+
 ## Pedido
 - id
+- cliente
 - fecha_creacion
+- total
 
-## LineaPedido
+## DetallePedido
 - id
-- id_producto
 - id_pedido
+- id_producto
 - cantidad
 - precio_unitario
 
+## MovimientoInventario
+- id
+- id_producto
+- fecha
+- cantidad
+
+## TipoMovimiento
+- id
+- id_movimiento
+- nombre
+- motivo
+
+## Cliente
+- id
+- nombre
+- apellido
+- nif
+- email
+
 ## Factura
 - id
+- id_cliente
 - id_pedido
-- estado
+- concepto
 - fecha_creacion
+- total
 
 ## Cobro
 - id
 - id_factura
-- importe
 - fecha_abono
+- importe

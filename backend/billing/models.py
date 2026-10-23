@@ -15,6 +15,7 @@ class Cliente(models.Model):
 
 class Factura(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
+    pedido = models.OneToOneField("core.Pedido", on_delete=models.PROTECT, null=True, blank=True)
     n_factura = models.CharField(max_length=20, verbose_name='Nº Factura', unique=True)
     concepto = models.TextField(verbose_name='Concepto')
     fecha = models.DateField(default=now, verbose_name='Fecha')
