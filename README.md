@@ -110,4 +110,4 @@ El control de acceso se implementará en el backend para impedir que usuarios no
 
 ## 8. Enlace a ClickUp
 
-https://app.clickup.com/1500510000002045/v/dc/1ampjurgczx-512/1ampjurgczx-72
+<https://app.clickup.com/1500510000002045/v/dc/1ampjurgczx-512/1ampjurgczx-72>
