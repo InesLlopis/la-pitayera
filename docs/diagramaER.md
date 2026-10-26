@@ -8,6 +8,7 @@ erDiagram
     PRODUCTO {
         int id_producto PK
         string categoria FK
+        string sku UK
         string nombre
         string descripcion
         decimal precio
@@ -38,13 +39,14 @@ erDiagram
     MOVIMIENTO_INVENTARIO {
         int id_movimiento PK
         int id_producto FK
+        int id_tipo_movimiento FK
         date fecha
         int cantidad
     }
 
     TIPO_MOVIMIENTO {
         int id_tipo_movimiento PK
-        int id_movimiento FK
+        
         string nombre
         string motivo
     }
@@ -60,7 +62,6 @@ erDiagram
     FACTURA {
         int id_factura PK
         int id_cliente FK
-        int id_pedido FK
         string n_factura UK
         string concepto
         decimal total
@@ -75,13 +76,12 @@ erDiagram
     }
 
     CLIENTE ||--o{ FACTURA : tener
-    PEDIDO ||--o| FACTURA : generar
     FACTURA ||--o| COBRO : asociar
     CLIENTE ||--o{ PEDIDO : realizar
     CATEGORIA ||--o{ PRODUCTO : pertenecer
     PEDIDO ||--o{ DETALLE_PEDIDO: tener
     PRODUCTO ||--o{ DETALLE_PEDIDO : aparecer
     PRODUCTO ||--o{ MOVIMIENTO_INVENTARIO : registrar
-    MOVIMIENTO_INVENTARIO ||--o{ TIPO_MOVIMIENTO : tener
+    TIPO_MOVIMIENTO ||--o{ MOVIMIENTO_INVENTARIO : tener
     
 ```
