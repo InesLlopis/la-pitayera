@@ -12,9 +12,9 @@ class Cliente(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Cliente'
-        verbose_name_plural = 'Clientes'
-        ordering = ['apellidos', 'nombre']
+        verbose_name = 'Cliente' # UD3.4.e
+        verbose_name_plural = 'Clientes' # UD3.4.e
+        ordering = ['apellidos', 'nombre'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -29,9 +29,9 @@ class Factura(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Factura'
-        verbose_name_plural = 'Facturas'
-        ordering = ['-fecha']
+        verbose_name = 'Factura' # UD3.4.e
+        verbose_name_plural = 'Facturas' # UD3.4.e
+        ordering = ['n_factura'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -44,9 +44,9 @@ class Cobro(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Cobro'
-        verbose_name_plural = 'Cobros'
-        ordering = ['-fecha']
+        verbose_name = 'Cobro' # UD3.4.e
+        verbose_name_plural = 'Cobros' # UD3.4.e
+        ordering = ['-fecha'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):

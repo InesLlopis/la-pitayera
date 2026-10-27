@@ -6,13 +6,13 @@ from django.utils.timezone import now
 # Create your models here.
 class Categoria(models.Model):
     nombre = models.CharField(max_length=256, verbose_name='Nombre')
-    descripcion = models.TextField(verbose_name='Descripcion', blank=True, default="",)
+    descripcion = models.TextField(verbose_name='Descripción', blank=True, default="",)
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Categoria'
-        verbose_name_plural = 'Categorias'
-        ordering = ['nombre']
+        verbose_name = 'Categoría' # UD3.4.e
+        verbose_name_plural = 'Categorías' # UD3.4.e
+        ordering = ['nombre'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -22,14 +22,14 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=256, verbose_name='Nombre')
     sku = models.CharField(max_length=20, verbose_name='SKU', unique=True) # UD3.3.c
     categoria = models.ForeignKey("core.Categoria", on_delete=models.PROTECT)
-    descripcion = models.TextField(verbose_name='Descripcion', blank=True, default="")
+    descripcion = models.TextField(verbose_name='Descripción', blank=True, default="")
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"), verbose_name='Precio')
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Producto'
-        verbose_name_plural = 'Productos'
-        ordering = ['nombre']
+        verbose_name = 'Producto' # UD3.4.e
+        verbose_name_plural = 'Productos' # UD3.4.e
+        ordering = ['nombre', 'sku'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -43,9 +43,9 @@ class Pedido(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Pedido'
-        verbose_name_plural = 'Pedidos'
-        ordering = ['-fecha']
+        verbose_name = 'Pedido' # UD3.4.e
+        verbose_name_plural = 'Pedidos' # UD3.4.e
+        ordering = ['n_pedido', '-fecha'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -59,10 +59,10 @@ class DetallePedido(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Detalle de Pedido'
-        verbose_name_plural = 'Detalles de Pedido'
-        ordering = ['pedido', 'producto']
-        unique_together = ('pedido', 'producto')
+        unique_together = ('pedido', 'producto') # UD3.3.c
+        verbose_name = 'Detalle de Pedido' # UD3.4.e
+        verbose_name_plural = 'Detalles de Pedido' # UD3.4.e
+        ordering = ['pedido', 'producto'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -75,9 +75,9 @@ class TipoMovimiento(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Tipo de Movimiento'
-        verbose_name_plural = 'Tipos de Movimiento'
-        ordering = ['nombre']
+        verbose_name = 'Tipo de Movimiento' # UD3.4.e
+        verbose_name_plural = 'Tipos de Movimiento' # UD3.4.e
+        ordering = ['nombre'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
@@ -91,9 +91,9 @@ class MovimientoInventario(models.Model):
 
     # UD3.3.c
     class Meta:
-        verbose_name = 'Movimiento de Inventario'
-        verbose_name_plural = 'Movimientos de Inventario'
-        ordering = ['-fecha']
+        verbose_name = 'Movimiento de Inventario' # UD3.4.e
+        verbose_name_plural = 'Movimientos de Inventario' # UD3.4.e
+        ordering = ['-fecha'] # UD3.4.f
 
     # UD3.3.b
     def __str__(self):
