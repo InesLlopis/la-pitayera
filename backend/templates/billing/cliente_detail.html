@@ -2,8 +2,12 @@
 
 
 {% block main_content %}
-<h1>Detalle de cliente</h1>
-<h6>{{object.nombre}}</h6>
+<h1>Detalle del cliente</h1>
+
+<p>Nombre: {{ object.nombre }}</p>
+<p>Apellidos: {{ object.apellidos }}</p>
+<p>NIF: {{ object.nif }}</p>
+<p>Email: {{ object.email }}</p>
 
 
 {% endblock main_content %}

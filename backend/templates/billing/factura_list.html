@@ -1,15 +1,37 @@
-{% extends "common/base_intranet.html" %}
+<!-- UD3.8.a -->
 
+{% extends "common/base_intranet.html" %}
 
 {% block main_content %}
 <div class="container">
-    <h1>Lista de facturas</h1>
-    <ul class="list-group mt-3 ">
-    {% for factura in object_list %}
-        <a href="{% url 'factura_detail' factura.id %}" class="list-group-item list-group-item-action">{{ factura }}</a>
-    {% empty %}
-        <p>No existen facturas.</p>
-    {% endfor %}
+    <h1>Lista de {{object.verbose_name_plural }}</h1>
+    <ul class="list-group mt-3">
+        <!-- UD3.8.b -->
+        {% for factura in page_obj %}
+        <li class="list-group-item">
+            <a href="{% url 'factura_detail' pk=factura.id %}">
+                {{ factura }}
+            </a>
+        </li>
+        {% empty %}
+        <li>
+            <p>No existen facturas.</p>
+        </li>
+        {% endfor %}
     </ul>
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">Primera</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock main_content %}

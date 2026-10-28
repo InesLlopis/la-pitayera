@@ -1,0 +1,15 @@
+<!-- UD3.8.a -->
+
+{% extends "common/base_intranet.html" %}
+
+
+{% block main_content %}
+<h1>Detalle del movimiento de inventario</h1>
+
+<p>Tipo: {{ object.tipo }}</p>
+<p>Fecha: {{ object.fecha }}</p>
+<p>Producto: {{ object.producto }}</p>
+<p>Cantidad: {{ object.cantidad }}</p>
+
+
+{% endblock main_content %}

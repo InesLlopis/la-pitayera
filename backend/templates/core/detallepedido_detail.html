@@ -1,0 +1,15 @@
+<!-- UD3.8.a -->
+
+{% extends "common/base_intranet.html" %}
+
+
+{% block main_content %}
+<h1>Detalle del detalle de pedido</h1>
+
+<p>Pedido: {{ object.pedido }}</p>
+<p>Producto: {{ object.producto }}</p>
+<p>Cantidad: {{ object.cantidad }}</p>
+<p>Precio por unidad: {{ object.precio_unitario }}</p>
+
+
+{% endblock main_content %}

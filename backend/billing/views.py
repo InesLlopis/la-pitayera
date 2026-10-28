@@ -6,6 +6,8 @@ from billing.models import Cliente, Factura, Cobro
 class ClienteListView(ListView):
     model = Cliente
     template_name = 'billing/cliente_list.html'
+    # UD3.8.b
+    paginate_by = 5
 
 
 class ClienteDetailView(DetailView):
@@ -16,6 +18,8 @@ class ClienteDetailView(DetailView):
 class FacturaListView(ListView):
     model = Factura
     template_name = 'billing/factura_list.html'
+    # UD3.8.b
+    paginate_by = 5
 
 
 class FacturaDetailView(DetailView):
@@ -26,6 +30,8 @@ class FacturaDetailView(DetailView):
 class CobroListView(ListView):
     model = Cobro
     template_name = 'billing/cobro_list.html'
+    # UD3.8.b
+    paginate_by = 5
 
 
 class CobroDetailView(DetailView):

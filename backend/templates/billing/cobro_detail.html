@@ -4,8 +4,9 @@
 {% block main_content %}
 <h1>Detalle del cobro</h1>
 
-<p>
-    {{object}}
-</p>
+<p>Cliente: {{ object.factura.cliente }}</p>
+<p>Factura: {{ object.factura }}</p>
+<p>Fecha: {{ object.fecha }}</p>
+<p>Importe: {{ object.importe }}</p>
 
 {% endblock main_content %}

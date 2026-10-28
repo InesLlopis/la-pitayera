@@ -1,0 +1,12 @@
+.git
+.env
+.env.*
+piapp-env/
+.venv/
+venv/
+frontend/
+docs/
+**/__pycache__/
+**/*.py[cod]
+backend/static/
+backend/media/

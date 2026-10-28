@@ -4,8 +4,10 @@
 {% block main_content %}
 <h1>Detalle de la factura</h1>
 
-<p>
-    {{object}}
-</p>
+<p>Cliente: {{ object.cliente }}</p>
+<p>Nº Factura: {{ object.n_factura }}</p>
+<p>Fecha: {{ object.fecha }}</p>
+<p>Concepto: {{ object.concepto }}</p>
+<p>Importe: {{ object.total }}</p>
 
 {% endblock main_content %}

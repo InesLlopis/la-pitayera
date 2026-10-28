@@ -1,0 +1,15 @@
+<!-- UD3.8.a -->
+
+{% extends "common/base_intranet.html" %}
+
+
+{% block main_content %}
+<h1>Detalle de pedido</h1>
+
+<p>Cliente: {{ object.cliente }}</p>
+<p>Nº de pedido: {{ object.n_pedido }}</p>
+<p>Fecha: {{ object.fecha }}</p>
+<p>Importe: {{ object.total }}</p>
+
+
+{% endblock main_content %}
