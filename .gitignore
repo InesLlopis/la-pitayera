@@ -48,5 +48,5 @@ Thumbs.db
 
 /backend/static
 
-# Dependencias Go
+# Dependencias Laravel
 backend-despliegue/vendor/
