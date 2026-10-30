@@ -9,10 +9,10 @@
     },
     // Puertos del contenedor que VS Code redirige a tu ordenador
     "forwardPorts": [
-        8000
+        8001
     ],
     "portsAttributes": {
-        "8000": {
+        "8001": {
             "label": "Backend Laravel"
         }
     },
