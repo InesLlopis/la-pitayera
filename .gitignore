@@ -47,3 +47,6 @@ build/
 Thumbs.db
 
 /backend/static
+
+# Dependencias Go
+backend-despliegue/vendor/
