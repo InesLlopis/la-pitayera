@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello - La Pitayera</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Colores Material Design 3 */
+            --color-primary: #6750A4;
+            --color-on-primary: #FFFFFF;
+            --color-surface: #FEF7FF;
+            --color-on-surface: #1D1B20;
+            --color-on-surface-variant: #625B71;
+            --color-error: #B3261E;
+            --color-error-container: #F9DEDC;
+            --color-on-error-container: #410E0B;
+
+            /* Tipografía */
+            --font-family: 'Roboto', sans-serif;
+            --font-title: 22px;
+            --font-body: 16px;
+
+            /* Espaciado */
+            --spacing-s: 8px;
+            --spacing-m: 16px;
+            --spacing-l: 24px;
+
+            /* Bordes */
+            --radius-input: 8px;
+            --radius-card: 12px;
+            --radius-container: 28px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--color-surface);
+            color: var(--color-on-surface);
+            font-family: var(--font-family);
+            font-size: var(--font-body);
+        }
+
+        /* CABECERA */
+
+        header {
+            padding: var(--spacing-m) var(--spacing-l);
+            border-bottom: 1px solid #D0C8D8;
+        }
+
+        nav {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-l);
+        }
+
+        .logo {
+            margin-right: auto;
+            color: var(--color-primary);
+            font-size: var(--font-title);
+            font-weight: 700;
+        }
+
+        nav a {
+            padding: var(--spacing-s);
+            border-radius: var(--radius-input);
+            color: var(--color-on-surface);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover,
+        nav a[aria-current="page"] {
+            color: var(--color-primary);
+            background: #F0EBF7;
+        }
+
+        /* CONTENIDO */
+
+        main {
+            max-width: 850px;
+            margin: 48px auto;
+            padding: var(--spacing-l);
+        }
+
+        .container {
+            padding: 40px;
+            background: #FFFFFF;
+            border-radius: var(--radius-container);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: var(--font-title);
+            font-weight: 700;
+        }
+
+        .description {
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        /* FORMULARIO */
+
+        .form-group {
+            margin-bottom: var(--spacing-l);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 20px 12px 8px;
+            border: 1px solid #79747E;
+            border-radius: var(--radius-input);
+            background: transparent;
+            color: var(--color-on-surface);
+            font: inherit;
+        }
+
+        label {
+            position: absolute;
+            top: 14px;
+            left: 12px;
+            padding: 0 4px;
+            background: white;
+            color: #625B71;
+            pointer-events: none;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        input:not(:placeholder-shown) {
+            padding-top: 24px;
+        }
+
+        input:focus+label,
+        input:not(:placeholder-shown)+label {
+            top: 2px;
+            font-size: 12px;
+        }
+
+        .help-text {
+            display: block;
+            margin-top: var(--spacing-s);
+            color: var(--color-on-surface-variant);
+            font-size: 14px;
+        }
+
+        /* BOTÓN */
+
+        button {
+            width: 100%;
+            padding: 14px var(--spacing-l);
+            border: none;
+            border-radius: var(--radius-input);
+            background: var(--color-primary);
+            color: var(--color-on-primary);
+            font: 500 var(--font-body) var(--font-family);
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        /* ESTADOS DE RESULTADO */
+
+        .states {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-m);
+            margin-top: 32px;
+        }
+
+        .state {
+            min-height: 145px;
+            padding: var(--spacing-l);
+            border: 1px solid #D0C8D8;
+            border-radius: var(--radius-card);
+            background: var(--color-surface);
+        }
+
+        .state h2 {
+            margin: 0 0 var(--spacing-m);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .state p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* VACÍO */
+
+        .empty {
+            color: #625B71;
+        }
+
+        /* CARGANDO */
+
+        .loading-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-m);
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #D0C8D8;
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* RESULTADO */
+
+        .success {
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .success h2 {
+            color: var(--color-primary);
+        }
+
+        /* ERROR */
+
+        .error {
+            border: 1px solid var(--color-error);
+            background: var(--color-error-container);
+            color: var(--color-on-error-container);
+        }
+
+        .error h2 {
+            color: var(--color-error);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+            main {
+                margin: var(--spacing-m) auto;
+                padding: var(--spacing-m);
+            }
+
+            .container {
+                padding: var(--spacing-l);
+            }
+
+            .states {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: var(--spacing-m);
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <nav aria-label="Navegación principal">
+            <span class="logo">La Pitayera</span>
+            <a href="#inicio">Inicio</a>
+            <a href="#hello" aria-current="page">Hello</a>
+        </nav>
+    </header>
+
+    <main id="hello">
+
+        <section class="container">
+
+            <h1>¡Bienvenido a Hello!</h1>
+
+            <p class="description">
+                Introduce tu nombre y visualiza los diferentes
+                estados de respuesta de la aplicación.
+            </p>
+
+            <!-- FORMULARIO -->
+            <form id="helloForm">
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <input type="text" id="nombre" name="nombre" placeholder=" " value="Ana"
+                            autocomplete="given-name">
+                        <label for="nombre">Nombre (opcional)</label>
+                    </div>
+
+                    <span class="help-text">
+                        Puedes dejar este campo vacío.
+                    </span>
+                </div>
+
+                <button type="submit">
+                    Saludar
+                </button>
+
+            </form>
+
+            <!-- CUATRO ESTADOS -->
+            <div class="states">
+
+                <!-- ESTADO VACÍO -->
+                <section class="state empty">
+                    <h2>Estado vacío</h2>
+                    <p>Tu saludo aparecerá aquí.</p>
+                </section>
+
+                <!-- ESTADO CARGANDO -->
+                <section class="state" aria-busy="true">
+                    <h2>Estado cargando</h2>
+
+                    <div class="loading-content">
+                        <div class="spinner" aria-hidden="true"></div>
+                        <p role="status">Generando saludo...</p>
+                    </div>
+                </section>
+
+                <!-- ESTADO RESULTADO -->
+                <section class="state success" role="status" aria-live="polite" aria-atomic="true">
+
+                    <h2>Resultado</h2>
+                    <p>Hello World Ana</p>
+
+                </section>
+
+                <!-- ESTADO ERROR -->
+                <section class="state error" role="alert" aria-atomic="true">
+
+                    <h2>Error de conexión</h2>
+                    <p>No se ha podido conectar con el servidor.
+                        Inténtalo de nuevo.</p>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const formulario = document.getElementById('helloForm');
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+
+            alert(
+                nombre
+                    ? 'Hello World ' + nombre
+                    : 'Hello World'
+            );
+        });
+    </script>
+
+</body>
+
+</html>
