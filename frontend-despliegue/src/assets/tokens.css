@@ -1,0 +1,22 @@
+
+:root {
+    /* Colores - Material Design 3 */
+    --color-primary: #6750A4;
+    --color-on-primary: #FFFFFF;
+    --color-surface: #FEF7FF;
+    --color-on-surface: #1D1B20;
+    --color-error: #B3261E;
+
+    /* Tipografía */
+    --font-family: 'Roboto', sans-serif;
+    --font-size-title: 22px;
+    --font-size-body: 16px;
+
+    /* Espaciado */
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 24px;
+
+    /* Bordes */
+    --radius-m: 8px;
+}
