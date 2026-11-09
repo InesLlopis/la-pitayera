@@ -21,7 +21,7 @@ class Categoria(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=256, verbose_name='Nombre')
     sku = models.CharField(max_length=20, verbose_name='SKU', unique=True) # UD3.3.c
-    categoria = models.ForeignKey("core.Categoria", on_delete=models.PROTECT)
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     descripcion = models.TextField(verbose_name='Descripción', blank=True, default="")
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"), verbose_name='Precio')
 
