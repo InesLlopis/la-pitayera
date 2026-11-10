@@ -30,13 +30,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get(
-        'DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1'
-    ).split(',')
-    if host.strip()
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -90,24 +84,13 @@ WSGI_APPLICATION = 'pitayera_config.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # UD3.2.h
-if os.environ.get('MARIADB_HOST'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MARIADB_DATABASE'),
-            'USER': os.environ.get('MARIADB_USER'),
-            'PASSWORD': os.environ.get('MARIADB_PASSWORD'),
-            'HOST': os.environ.get('MARIADB_HOST'),
-            'PORT': os.environ.get('MARIADB_PORT', '3306'),
-        }
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # Password validation

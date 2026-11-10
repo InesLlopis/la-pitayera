@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+
+{% comment %}UD4.2.e{% endcomment %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2>{{ titulo }}</h2>
+
+    <p>
+        {{ mensaje_confirmacion }}
+
+        <strong>{{ object }}</strong>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="submit" class="btn btn-danger" value="Confirmar eliminación">
+        
+        <a href="javascript:history.back()" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

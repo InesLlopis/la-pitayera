@@ -6,6 +6,9 @@ from billing.models import Cliente, Factura, Cobro
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+# UD4.2.d
+from common.mixins import CreateUpdateContextMixin
+
 
 
 class ClienteListView(ListView):
@@ -47,18 +50,30 @@ class CobroDetailView(DetailView):
 # UD4.2
 
 # UD4.2.a
-class ClienteCreateView(CreateView):
+class ClienteCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     model = Cliente
     fields = ['nombre', 'apellidos', 'nif', 'email']
+
+    # UD4.2.c
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = 'Crear cliente'
+    titulo_actualizacion = None
+    url_borrado = None
     
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cliente_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class ClienteUpdateView(UpdateView):
+class ClienteUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Cliente
     fields = ['nombre', 'apellidos', 'nif', 'email']
+
+    # UD4.2.c
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = None
+    titulo_actualizacion = 'Actualizar cliente'
+    url_borrado = 'cliente_delete'
 
     
     def get_success_url(self):
@@ -71,18 +86,30 @@ class ClienteDeleteView(DeleteView):
     success_url = reverse_lazy('cliente_list')
 
 # UD4.2.a
-class FacturaCreateView(CreateView):
+class FacturaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     model = Factura
     fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
+
+    # UD4.2.c    
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = 'Crear factura'
+    titulo_actualizacion = None
+    url_borrado = None
 
     def get_success_url(self):
         object = self.object
         return reverse_lazy('factura_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class FacturaUpdateView(UpdateView):
+class FacturaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Factura
     fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
+
+    # UD4.2.c
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = None
+    titulo_actualizacion = 'Actualizar factura'
+    url_borrado = 'factura_delete'
 
     def get_success_url(self):
         object = self.object
@@ -94,18 +121,30 @@ class FacturaDeleteView(DeleteView):
     success_url = reverse_lazy('factura_list')
 
 # UD4.2.a
-class CobroCreateView(CreateView):
+class CobroCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     model = Cobro
     fields = ['factura', 'fecha', 'importe']
+
+    # UD4.2.c    
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = 'Crear cobro'
+    titulo_actualizacion = None
+    url_borrado = None
 
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cobro_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class CobroUpdateView(UpdateView):
+class CobroUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Cobro
     fields = ['factura', 'fecha', 'importe']
+
+    # UD4.2.c
+    template_name = 'common/base_create_update.html'
+    titulo_creacion = None
+    titulo_actualizacion = 'Actualizar cobro'
+    url_borrado = 'cobro_delete'
 
     def get_success_url(self):
         object = self.object
