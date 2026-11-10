@@ -7,7 +7,7 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DeleteVie
 from django.urls import reverse_lazy
 
 # UD4.2.d
-from common.mixins import CreateUpdateContextMixin
+from common.mixins import CreateUpdateContextMixin, DeleteMixin
 
 
 # Create your views here.
@@ -92,7 +92,7 @@ class CategoriaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
-    titulo_creacion = 'Crear categoria'
+    titulo_creacion = 'Crear categoría'
     titulo_actualizacion = None
     url_borrado = None
 
@@ -108,7 +108,7 @@ class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     # UD4.2.c
     template_name = 'common/base_create_update.html'
     titulo_creacion = None
-    titulo_actualizacion = 'Actualizar categoria'
+    titulo_actualizacion = 'Actualizar categoría'
     url_borrado = 'categoria_delete'
 
     def get_success_url(self):
@@ -116,13 +116,14 @@ class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('categoria_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class CategoriaDeleteView(DeleteView):
+class CategoriaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Categoria
     success_url = reverse_lazy('categoria_list')
     
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
-    titulo = 'Eliminar categoria'
-    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
+    titulo = 'Eliminar categoría'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar esta categoría?'
     
 # UD4.2.a
 class ProductoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
@@ -155,10 +156,11 @@ class ProductoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('producto_update', kwargs={'pk': object.id})
     
 # UD4.2.a
-class ProductoDeleteView(DeleteView):
+class ProductoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Producto
     success_url = reverse_lazy('producto_list')
     
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
     titulo = 'Eliminar producto'
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
@@ -194,10 +196,11 @@ class PedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('pedido_update', kwargs={'pk': object.id})
         
 # UD4.2.a
-class PedidoDeleteView(DeleteView):
+class PedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Pedido
     success_url = reverse_lazy('pedido_list')
 
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
     titulo = 'Eliminar pedido'
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este pedido?'
@@ -233,13 +236,14 @@ class DetallePedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('detalle_pedido_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class DetallePedidoDeleteView(DeleteView):
+class DetallePedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = DetallePedido
     success_url = reverse_lazy('detalle_pedido_list')
 
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
-    titulo = 'Eliminar categoria'
-    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
+    titulo = 'Eliminar detalle de pedido'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este detalle de pedido?'
 
 # UD4.2.a
 class MovimientoInventarioCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
@@ -272,13 +276,14 @@ class MovimientoInventarioUpdateView(CreateUpdateContextMixin, UpdateView): # UD
         return reverse_lazy('movimiento_inventario_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class MovimientoInventarioDeleteView(DeleteView):
+class MovimientoInventarioDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = MovimientoInventario
     success_url = reverse_lazy('movimiento_inventario_list')
 
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
-    titulo = 'Eliminar categoria'
-    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
+    titulo = 'Eliminar movimiento de inventario'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este movimiento de inventario?'
 
 # UD4.2.a
 class TipoMovimientoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
@@ -311,10 +316,11 @@ class TipoMovimientoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('tipo_movimiento_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class TipoMovimientoDeleteView(DeleteView):
+class TipoMovimientoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = TipoMovimiento
     success_url = reverse_lazy('tipo_movimiento_list')
 
+    # UD4.2.e
     template_name = 'common/base_confirm_delete.html'
-    titulo = 'Eliminar categoria'
-    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
+    titulo = 'Eliminar tipo de movimiento'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este tipo de movimiento?'

@@ -7,7 +7,7 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DeleteVie
 from django.urls import reverse_lazy
 
 # UD4.2.d
-from common.mixins import CreateUpdateContextMixin
+from common.mixins import CreateUpdateContextMixin, DeleteMixin
 
 
 
@@ -81,9 +81,15 @@ class ClienteUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('cliente_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class ClienteDeleteView(DeleteView):
+class ClienteDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Cliente
     success_url = reverse_lazy('cliente_list')
+    
+    # UD4.2.e
+    template_name = 'common/base_confirm_delete.html'
+    titulo = 'Eliminar cliente'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este cliente?'
+
 
 # UD4.2.a
 class FacturaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
@@ -116,9 +122,15 @@ class FacturaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('factura_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class FacturaDeleteView(DeleteView):
+class FacturaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Factura
     success_url = reverse_lazy('factura_list')
+    
+    # UD4.2.e
+    template_name = 'common/base_confirm_delete.html'
+    titulo = 'Eliminar factura'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar esta factura?'
+
 
 # UD4.2.a
 class CobroCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
@@ -151,6 +163,11 @@ class CobroUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('cobro_update', kwargs={'pk': object.id})
 
 # UD4.2.a
-class CobroDeleteView(DeleteView):
+class CobroDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     model = Cobro
     success_url = reverse_lazy('cobro_list')
+    
+    # UD4.2.e
+    template_name = 'common/base_confirm_delete.html'
+    titulo = 'Eliminar cobro'
+    mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este cobro?'

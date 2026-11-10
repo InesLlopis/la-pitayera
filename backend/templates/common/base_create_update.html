@@ -15,13 +15,12 @@
         {% endif %}
     </h2>
 
-    <form method="post" enctype="multipart/form-data" novalidate>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form.as_p }}
 
-        <input type="submit" class="btn btn-success mr-2" value="{% if object %}Actualizar{% else %}Crear{% endif %}">
-
+        <input type="submit" value="{{object|yesno:'Actualizar,Crear'}}">
         {% if object and url_borrado %}
 
         <a class="btn btn-danger" role="button" href="{% url url_borrado object.id %}">
