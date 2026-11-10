@@ -1,17 +1,13 @@
-# UD3.2.h
-FROM python:3.12-slim
+FROM python:3.10
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
+RUN mkdir /code
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /code
 
-COPY backend/ ./
-RUN chmod +x entrypoint.sh
+ADD requirements.txt /code/
 
-EXPOSE 8000
+RUN pip install --upgrade pip
 
-ENTRYPOINT ["./entrypoint.sh"]
+RUN pip install -r requirements.txt
