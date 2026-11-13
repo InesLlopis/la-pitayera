@@ -6,8 +6,8 @@ from core.models import Categoria, Producto, Pedido, DetallePedido, MovimientoIn
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-# UD4.2.d
-from common.mixins import CreateUpdateContextMixin, DeleteMixin
+# UD4.2.d, UD4.2.f, UD4.2.h, UD4.2.i
+from common.mixins import CreateUpdateContextMixin, DeleteMixin, PrecioMixin, CantidadMixin, OrderingByIdMixin
 
 
 # Create your views here.
@@ -134,7 +134,7 @@ class CategoriaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar esta categoría?'
     
 # UD4.2.a
-class ProductoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
+class ProductoCreateView(PrecioMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
     model = Producto
     fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
 
@@ -153,7 +153,7 @@ class ProductoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         return "Producto '{}' creado correctamente".format(str(self.object))
     
 # UD4.2.a
-class ProductoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class ProductoUpdateView(PrecioMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
     model = Producto
     fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
 
@@ -230,7 +230,7 @@ class PedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este pedido?'
     
 # UD4.2.a
-class DetallePedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
+class DetallePedidoCreateView(CantidadMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
     model = DetallePedido
     fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
 
@@ -249,7 +249,7 @@ class DetallePedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         return "Detalle de pedido '{}' creado correctamente".format(str(self.object))
 
 # UD4.2.a
-class DetallePedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class DetallePedidoUpdateView(CantidadMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
     model = DetallePedido
     fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
 

@@ -33,8 +33,7 @@ class DeleteMixin:
 # UD4.2.g
 class CobroMixin:
     def form_valid(self, form):
-        factura = form.cleaned_data["factura"]
-        importe = form.cleaned_data["importe"]
+        factura = form.instance.factura
         cobros = Cobro.objects.filter(factura=factura)
         cobro_actual = getattr(self, "object", None)
         
@@ -44,7 +43,35 @@ class CobroMixin:
         total_previo = (cobros.aggregate(suma=Sum("importe"))["suma"] or Decimal("0.00"))
         saldo_disponible = factura.total - total_previo
         
-        if importe > saldo_disponible:
-            form.add_error("importe", f"El cobro ({importe}) supera el saldo pendiente ({saldo_disponible}).")
+        if form.instance.importe > saldo_disponible:
+            form.add_error("importe", f"El cobro supera el saldo pendiente ({saldo_disponible}).")
             return self.form_invalid(form)
         return super().form_valid(form)
+    
+# UD 4.2.h
+class PrecioMixin:
+    def form_valid(self, form):
+        if form.instance.precio < 0:
+            messages.error(self.request, "El precio no puede ser negativo.")
+            return super().form_invalid(form)
+        return super().form_valid(form)
+    
+# UD4.2.h
+class CantidadMixin:
+    def form_valid(self, form):
+        if form.instance.cantidad <= 0:
+            messages.error(self.request, "La cantidad del producto debe ser mayor que cero.")
+            return super().form_invalid(form)
+        return super().form_valid(form)
+    
+# UD4.2.i
+class OrderingByIdMixin:
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        ordering = self.request.GET.get("ordering")
+        
+        if ordering == "asc":
+            return queryset.order_by("id")
+        if ordering == "desc":
+            return queryset.order_bu("-id")
+        return queryset
