@@ -12,7 +12,7 @@ from common.mixins import CreateUpdateContextMixin, DeleteMixin, PrecioMixin, Ca
 
 # Create your views here.
 # UD3.7.a
-class CategoriaListView(ListView):
+class CategoriaListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Categoria
     template_name = 'core/categoria_list.html'
     # UD3.8.b
@@ -24,7 +24,7 @@ class CategoriaDetailView(DetailView):
     template_name = 'core/categoria_detail.html'
 
 # UD3.7.a
-class ProductoListView(ListView):
+class ProductoListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Producto
     template_name = 'core/producto_list.html'
     # UD3.8.b
@@ -36,7 +36,7 @@ class ProductoDetailView(DetailView):
     template_name = 'core/producto_detail.html'
 
 # UD3.7.a
-class PedidoListView(ListView):
+class PedidoListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Pedido
     template_name = 'core/pedido_list.html'
     # UD3.8.b
@@ -48,7 +48,7 @@ class PedidoDetailView(DetailView):
     template_name = 'core/pedido_detail.html'
 
 # UD3.7.a
-class DetallePedidoListView(ListView):
+class DetallePedidoListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = DetallePedido
     template_name = 'core/detalle_pedido_list.html'
     # UD3.8.b
@@ -60,7 +60,7 @@ class DetallePedidoDetailView(DetailView):
     template_name = 'core/detalle_pedido_detail.html'
 
 # UD3.7.a
-class MovimientoInventarioListView(ListView):
+class MovimientoInventarioListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = MovimientoInventario
     template_name = 'core/movimientoinventario_list.html'
     # UD3.8.b
@@ -72,7 +72,7 @@ class MovimientoInventarioDetailView(DetailView):
     template_name = 'core/movimientoinventario_detail.html'
 
 # UD3.7.a
-class TipoMovimientoListView(ListView):
+class TipoMovimientoListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = TipoMovimiento
     template_name = 'core/tipomovimiento_list.html'
     # UD3.8.b

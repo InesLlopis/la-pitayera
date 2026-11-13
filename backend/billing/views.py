@@ -6,12 +6,12 @@ from billing.models import Cliente, Factura, Cobro
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-# UD4.2.d
-from common.mixins import CreateUpdateContextMixin, DeleteMixin, CobroMixin
+# UD4.2.d, UD4.2.f, UD4.2.h, UD4.2.i
+from common.mixins import CreateUpdateContextMixin, DeleteMixin, CobroMixin, OrderingByIdMixin
 
 
 
-class ClienteListView(ListView):
+class ClienteListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Cliente
     template_name = 'billing/cliente_list.html'
     # UD3.8.b
@@ -23,7 +23,7 @@ class ClienteDetailView(DetailView):
     template_name = 'billing/cliente_detail.html'
 
 
-class FacturaListView(ListView):
+class FacturaListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Factura
     template_name = 'billing/factura_list.html'
     # UD3.8.b
@@ -35,7 +35,7 @@ class FacturaDetailView(DetailView):
     template_name = 'billing/factura_detail.html'
 
 
-class CobroListView(ListView):
+class CobroListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = Cobro
     template_name = 'billing/cobro_list.html'
     # UD3.8.b
