@@ -3,7 +3,6 @@
 from django.contrib import messages
 from django.db.models.deletion import ProtectedError
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 # UD4.2.g
 from billing.models import Cobro
@@ -28,7 +27,7 @@ class DeleteMixin:
             return super().form_valid(form)
         except ProtectedError:
             messages.error(self.request, "Existen dependencias para el objeto {}. Elimine antes dichas dependencias".format(str(self.object)))
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(self.request.path)
         
 # UD4.2.g
 class CobroMixin:
@@ -73,5 +72,5 @@ class OrderingByIdMixin:
         if ordering == "asc":
             return queryset.order_by("id")
         if ordering == "desc":
-            return queryset.order_bu("-id")
+            return queryset.order_by("-id")
         return queryset
