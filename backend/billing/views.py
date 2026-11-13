@@ -7,7 +7,7 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DeleteVie
 from django.urls import reverse_lazy
 
 # UD4.2.d
-from common.mixins import CreateUpdateContextMixin, DeleteMixin
+from common.mixins import CreateUpdateContextMixin, DeleteMixin, CobroMixin
 
 
 
@@ -63,6 +63,10 @@ class ClienteCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cliente_update', kwargs={'pk': object.id})
+    
+    # UD4.4.a
+    def get_success_message(self):
+            return "'{}' creado correctamente".format(str(self.object))
 
 # UD4.2.a
 class ClienteUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
@@ -79,6 +83,10 @@ class ClienteUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cliente_update', kwargs={'pk': object.id})
+    
+    # UD4.4.a
+    def get_success_message(self):
+        return "'{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
 class ClienteDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -105,7 +113,12 @@ class FacturaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('factura_update', kwargs={'pk': object.id})
-
+    
+    # UD4.4.a
+    def get_success_message(self):
+            return "'{}' creada correctamente".format(str(self.object))
+        
+    
 # UD4.2.a
 class FacturaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Factura
@@ -120,6 +133,10 @@ class FacturaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('factura_update', kwargs={'pk': object.id})
+    
+    # UD4.4.a
+    def get_success_message(self):
+        return "'{}' actualizada correctamente".format(str(self.object))
 
 # UD4.2.a
 class FacturaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -133,7 +150,7 @@ class FacturaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
 
 
 # UD4.2.a
-class CobroCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
+class CobroCreateView(CobroMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.g
     model = Cobro
     fields = ['factura', 'fecha', 'importe']
 
@@ -146,9 +163,14 @@ class CobroCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cobro_update', kwargs={'pk': object.id})
+    
+    # 4.4.a
+    def get_success_message(self):
+        return "'{}' creado correctamente".format(str(self.object))
+
 
 # UD4.2.a
-class CobroUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class CobroUpdateView(CobroMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.g
     model = Cobro
     fields = ['factura', 'fecha', 'importe']
 
@@ -161,6 +183,10 @@ class CobroUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('cobro_update', kwargs={'pk': object.id})
+    
+    # UD4.4.a
+    def get_success_message(self):
+        return "'{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
 class CobroDeleteView(DeleteMixin, DeleteView): # UD4.2.f

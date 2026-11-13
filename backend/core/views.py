@@ -100,6 +100,10 @@ class CategoriaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         object = self.object
         return reverse_lazy('categoria_update', kwargs={'pk': object.id})
 
+    # UD4.4.a
+    def get_success_message(self):
+        return "Categoría '{}' creada correctamente".format(str(self.object))
+
 # UD4.2.a
 class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Categoria
@@ -114,6 +118,10 @@ class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('categoria_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Categoría '{}' actualizada correctamente".format(str(self.object))
 
 # UD4.2.a
 class CategoriaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -139,6 +147,10 @@ class ProductoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('producto_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Producto '{}' creado correctamente".format(str(self.object))
     
 # UD4.2.a
 class ProductoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
@@ -154,6 +166,10 @@ class ProductoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('producto_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Producto '{}' actualizado correctamente".format(str(self.object))
     
 # UD4.2.a
 class ProductoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -179,6 +195,10 @@ class PedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('pedido_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Pedido '{}' creado correctamente".format(str(self.object))
         
 # UD4.2.a
 class PedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
@@ -194,6 +214,10 @@ class PedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('pedido_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Pedido '{}' actualizado correctamente".format(str(self.object))
         
 # UD4.2.a
 class PedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -220,6 +244,10 @@ class DetallePedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         object = self.object
         return reverse_lazy('detalle_pedido_update', kwargs={'pk': object.id})
 
+    # UD4.4.a
+    def get_success_message(self):
+        return "Detalle de pedido '{}' creado correctamente".format(str(self.object))
+
 # UD4.2.a
 class DetallePedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = DetallePedido
@@ -234,6 +262,10 @@ class DetallePedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('detalle_pedido_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Detalle de pedido '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
 class DetallePedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -260,6 +292,10 @@ class MovimientoInventarioCreateView(CreateUpdateContextMixin, CreateView): # UD
         object = self.object
         return reverse_lazy('movimiento_inventario_update', kwargs={'pk': object.id})
 
+    # UD4.4.a
+    def get_success_message(self):
+        return "Movimiento de inventario '{}' creado correctamente".format(str(self.object))
+
 # UD4.2.a
 class MovimientoInventarioUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = MovimientoInventario
@@ -274,6 +310,10 @@ class MovimientoInventarioUpdateView(CreateUpdateContextMixin, UpdateView): # UD
     def get_success_url(self):
         object = self.object
         return reverse_lazy('movimiento_inventario_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Movimiento de inventario '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
 class MovimientoInventarioDeleteView(DeleteMixin, DeleteView): # UD4.2.f
@@ -300,6 +340,10 @@ class TipoMovimientoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         object = self.object
         return reverse_lazy('tipo_movimiento_update', kwargs={'pk': object.id})
 
+    # UD4.4.a
+    def get_success_message(self):
+        return "Tipo de movimiento '{}' creado correctamente".format(str(self.object))
+
 # UD4.2.a
 class TipoMovimientoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = TipoMovimiento
@@ -314,6 +358,10 @@ class TipoMovimientoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
     def get_success_url(self):
         object = self.object
         return reverse_lazy('tipo_movimiento_update', kwargs={'pk': object.id})
+
+    # UD4.4.a
+    def get_success_message(self):
+        return "Tipo de movimiento '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
 class TipoMovimientoDeleteView(DeleteMixin, DeleteView): # UD4.2.f

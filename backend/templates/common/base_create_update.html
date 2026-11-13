@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="container">
+    {% comment %}UD4.4.a{% endcomment %}
+    {% include 'common/messages.html' %}
+
     <h2>{% if object %}
 
         {{ titulo_actualizacion}}
@@ -30,5 +33,4 @@
         {% endif %}
     </form>
 </div>
-
 {% endblock %}
