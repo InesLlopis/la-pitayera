@@ -67,7 +67,7 @@ class CantidadMixin:
 class OrderingByIdMixin:
     def get_queryset(self):
         queryset = super().get_queryset()
-        ordering = self.request.GET.get("ordering")
+        ordering = self.request.GET.get("ordering", None)
         
         if ordering == "asc":
             return queryset.order_by("id")

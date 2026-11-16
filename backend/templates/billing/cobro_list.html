@@ -1,6 +1,6 @@
-<!-- UD3.8.a -->
-
 {% extends "common/base_intranet.html" %}
+
+{% comment %} UD3.8.a {% endcomment %}
 
 {% block main_content %}
 <div class="container">
@@ -21,16 +21,17 @@
     </ul>
     <div class="pagination">
         {% if page_obj.has_previous %}
-        <a href="?page=1">Primera</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% comment %} UD4.2.i {% endcomment %}
+        <a href="?ordering={{ request.GET.ordering }}&page=1">Primera</a>
+        <a href="?ordering={{ request.GET.ordering }}&page={{ page_obj.previous_page_number }}">Anterior</a>
         {% endif %}
 
         <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
         </span>
 
         {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+        <a href="?ordering={{ request.GET.ordering }}&page={{ page_obj.next_page_number }}">Siguiente</a>
+        <a href="?ordering={{ request.GET.ordering }}&page={{ page_obj.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
 </div>
