@@ -8,7 +8,9 @@ from django.urls import reverse_lazy
 
 # UD4.2.d, UD4.2.f, UD4.2.h, UD4.2.i
 from common.mixins import CreateUpdateContextMixin, DeleteMixin, PrecioMixin, CantidadMixin, OrderingByIdMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
+from .forms import ProductoCreateForm
 
 # Create your views here.
 # UD3.7.a
@@ -135,9 +137,9 @@ class CategoriaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     
 # UD4.2.a
 class ProductoCreateView(PrecioMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
-    model = Producto
-    fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
-
+    # model = Producto
+    # fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
+    form_class = ProductoCreateForm
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
     titulo_creacion = 'Crear producto'
