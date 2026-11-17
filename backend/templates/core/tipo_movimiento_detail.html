@@ -9,5 +9,12 @@
 <p>Nombre: {{object.nombre }}</p>
 <p>Motivo: {{object.motivo }}</p>
 
-
+<div>
+    <a href="{% url 'tipo_movimiento_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'tipo_movimiento_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
 {% endblock main_content %}

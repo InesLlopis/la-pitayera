@@ -11,5 +11,12 @@
 <p>Producto: {{ object.producto }}</p>
 <p>Cantidad: {{ object.cantidad }}</p>
 
-
+<div>
+    <a href="{% url 'movimiento_inventario_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'movimiento_inventario_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
 {% endblock main_content %}

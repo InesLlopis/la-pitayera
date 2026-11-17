@@ -11,5 +11,12 @@
 <p>Fecha: {{ object.fecha }}</p>
 <p>Importe: {{ object.total }}</p>
 
-
+<div>
+    <a href="{% url 'pedido_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'pedido_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
 {% endblock main_content %}

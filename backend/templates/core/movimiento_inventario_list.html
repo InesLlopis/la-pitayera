@@ -5,11 +5,13 @@
 {% block main_content %}
 <div class="container">
     <h1>Lista de Movimientos de inventario</h1>
+    <div><a href="{% url 'movimiento_inventario_create' %}" class="btn btn-success">Crear</a></div>
+
     <ul class="list-group mt-3">
         {% comment %} UD3.8.b {% endcomment %}
         {% for movimientoinventario in page_obj %}
         <li class="list-group-item">
-            <a href="{% url 'movimientoinventario_detail' pk=movimientoinventario.id %}">
+            <a href="{% url 'movimiento_inventario_detail' pk=movimientoinventario.id %}">
                 {{ movimientoinventario }}
             </a>
         </li>

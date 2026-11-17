@@ -5,11 +5,13 @@
 {% block main_content %}
 <div class="container">
     <h1>Lista de Detalles de pedido</h1>
+    <div><a href="{% url 'detalle_pedido_create' %}" class="btn btn-success">Crear</a></div>
+
     <ul class="list-group mt-3">
         {% comment %} UD3.8.b {% endcomment %}
         {% for detallepedido in page_obj %}
         <li class="list-group-item">
-            <a href="{% url 'detallepedido_detail' pk=detallepedido.id %}">
+            <a href="{% url 'detalle_pedido_detail' pk=detallepedido.id %}">
                 {{ detallepedido }}
             </a>
         </li>

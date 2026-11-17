@@ -8,26 +8,49 @@
     <div class = "row justify-content-evenly mb-5">
         <div class="card col-sm-2" >
           <div class="card-body">
-            <h5 class="card-title">[Tu app]</h5>
-            <p class="card-text">[Tu app]</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <h5 class="card-title">Categorías</h5>
+            <p class="card-text">Categorías</p>
+            <a href="{% url 'categoria_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
         <div class="card col-sm-2" >
           <div class="card-body">
-            <h5 class="card-title">[Tu app]</h5>
-            <p class="card-text">[Tu app]</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <h5 class="card-title">Productos</h5>
+            <p class="card-text">Productos</p>
+            <a href="{% url 'producto_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
         <div class="card col-sm-2" >
           <div class="card-body">
-            <h5 class="card-title">[Tu app]</h5>
-            <p class="card-text">[Tu app]</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <h5 class="card-title">Pedidos</h5>
+            <p class="card-text">Pedidos</p>
+            <a href="{% url 'pedido_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
-    </div>
+      </div>
+      <div class = "row justify-content-evenly mb-5">
+        <div class="card col-sm-2" >
+          <div class="card-body">
+            <h5 class="card-title">Detalles de Pedidos</h5>
+            <p class="card-text">Detalles de Pedidos</p>
+            <a href="{% url 'detalle_pedido_list' %}" class="btn btn-primary">Consultar</a>
+          </div>
+        </div>
+        <div class="card col-sm-2" >
+          <div class="card-body">
+            <h5 class="card-title">Movimientos de Inventario</h5>
+            <p class="card-text">Movimientos de Inventario</p>
+            <a href="{% url 'movimiento_inventario_list' %}" class="btn btn-primary">Consultar</a>
+          </div>
+        </div>
+        <div class="card col-sm-2" >
+          <div class="card-body">
+            <h5 class="card-title">Tipos de Movimientos</h5>
+            <p class="card-text">Tipos de Movimientos</p>
+            <a href="{% url 'tipo_movimiento_list' %}" class="btn btn-primary">Consultar</a>
+          </div>
+        </div>
+      </div>
 
 
     <h3>Facturación</h3>
@@ -37,21 +60,21 @@
           <div class="card-body">
             <h5 class="card-title">Clientes</h5>
             <p class="card-text">Clientes</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <a href="{% url 'cliente_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
         <div class="card col-sm-2" >
           <div class="card-body">
             <h5 class="card-title">Facturas</h5>
             <p class="card-text">Facturas</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <a href="{% url 'factura_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
         <div class="card col-sm-2" >
           <div class="card-body">
             <h5 class="card-title">Cobros</h5>
             <p class="card-text">Cobros</p>
-            <a href="#" class="btn btn-primary">Consultar</a>
+            <a href="{% url 'cobro_list' %}" class="btn btn-primary">Consultar</a>
           </div>
         </div>
 

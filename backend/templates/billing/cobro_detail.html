@@ -9,4 +9,13 @@
 <p>Fecha: {{ object.fecha }}</p>
 <p>Importe: {{ object.importe }}</p>
 
+<div>
+    <a href="{% url 'cobro_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'cobro_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
+
 {% endblock main_content %}

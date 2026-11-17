@@ -9,5 +9,13 @@
 <p>Nombre: {{ object.nombre }}</p>
 <p>Descripción: {{ object.descripcion }}</p>
 
+<div>
+    <a href="{% url 'categoria_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'categoria_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
 
 {% endblock main_content %}

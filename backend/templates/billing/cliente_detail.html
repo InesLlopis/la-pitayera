@@ -9,5 +9,13 @@
 <p>NIF: {{ object.nif }}</p>
 <p>Email: {{ object.email }}</p>
 
+<div>
+    <a href="{% url 'cliente_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'cliente_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
 
 {% endblock main_content %}

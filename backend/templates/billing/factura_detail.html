@@ -10,4 +10,13 @@
 <p>Concepto: {{ object.concepto }}</p>
 <p>Importe: {{ object.total }}</p>
 
+<div>
+    <a href="{% url 'factura_list' %}" class="btn btn-secondary">
+        Volver
+    </a>
+    <a href="{% url 'factura_update' object.pk %}" class="btn btn-success">
+        Actualizar
+    </a>
+</div>
+
 {% endblock main_content %}

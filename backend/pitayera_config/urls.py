@@ -62,14 +62,14 @@ urlpatterns = [
     path('pedido_list/', core_views.PedidoListView.as_view(), name='pedido_list'),
     path('pedido_detail/<int:pk>/', core_views.PedidoDetailView.as_view(), name='pedido_detail'),
     
-    path('detalle_pedido_list/', core_views.DetallePedidoListView.as_view(), name='detallepedido_list'),
-    path('detalle_pedido_detail/<int:pk>/', core_views.DetallePedidoDetailView.as_view(), name='detallepedido_detail'),
+    path('detalle_pedido_list/', core_views.DetallePedidoListView.as_view(), name='detalle_pedido_list'),
+    path('detalle_pedido_detail/<int:pk>/', core_views.DetallePedidoDetailView.as_view(), name='detalle_pedido_detail'),
     
-    path('movimientoinventario_list/', core_views.MovimientoInventarioListView.as_view(), name='movimientoinventario_list'),
-    path('movimientoinventario_detail/<int:pk>/', core_views.MovimientoInventarioDetailView.as_view(), name='movimientoinventario_detail'),
+    path('movimiento_inventario_list/', core_views.MovimientoInventarioListView.as_view(), name='movimiento_inventario_list'),
+    path('movimiento_inventario_detail/<int:pk>/', core_views.MovimientoInventarioDetailView.as_view(), name='movimiento_inventario_detail'),
     
-    path('tipomovimiento_list/', core_views.TipoMovimientoListView.as_view(), name='tipomovimiento_list'),
-    path('tipomovimiento_detail/<int:pk>/', core_views.TipoMovimientoDetailView.as_view(), name='tipomovimiento_detail'),
+    path('tipo_movimiento_list/', core_views.TipoMovimientoListView.as_view(), name='tipo_movimiento_list'),
+    path('tipo_movimiento_detail/<int:pk>/', core_views.TipoMovimientoDetailView.as_view(), name='tipo_movimiento_detail'),
     
     # UD4.2.b
     path('categoria_create/', core_views.CategoriaCreateView.as_view(), name='categoria_create'),

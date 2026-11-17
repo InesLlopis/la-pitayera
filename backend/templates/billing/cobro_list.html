@@ -4,7 +4,8 @@
 
 {% block main_content %}
 <div class="container">
-    <h1>Lista de {{object.verbose_name_plural }}</h1>
+    <h1>Lista de Cobros</h1>
+    <div><a href="{% url 'cobro_create' %}" class="btn btn-success">Crear</a></div>
     <ul class="list-group mt-3">
         <!-- UD3.8.b -->
         {% for cobro in page_obj %}
