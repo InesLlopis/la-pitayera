@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'common',
     'core',
     'billing',
+    
+    # UD5.1.a
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +157,5 @@ MESSAGE_TAGS = {messages.ERROR: "danger",}
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+# UD5.1.a
+AUTH_USER_MODEL = 'usuarios.MyUser'
