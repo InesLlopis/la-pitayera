@@ -10,7 +10,8 @@ from django.urls import reverse_lazy
 from common.mixins import CreateUpdateContextMixin, DeleteMixin, PrecioMixin, CantidadMixin, OrderingByIdMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .forms import ProductoCreateForm
+# UD4.4.e
+from .forms import CategoriaCreateForm, CategoriaUpdateForm, ProductoCreateForm, ProductoUpdateForm, PedidoCreateForm, PedidoUpdateForm, DetallePedidoCreateForm, DetallePedidoUpdateForm, TipoMovimientoCreateForm, TipoMovimientoUpdateForm, MovimientoInventarioCreateForm, MovimientoInventarioUpdateForm
 
 # Create your views here.
 # UD3.7.a
@@ -88,9 +89,12 @@ class TipoMovimientoDetailView(DetailView):
 # UD4.2
 
 # UD4.2.a
-class CategoriaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
-    model = Categoria
-    fields = ['nombre', 'descripcion']
+class CategoriaCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d
+    # model = Categoria
+    # fields = ['nombre', 'descripcion']
+    
+    # UD4.4.e
+    form_class = CategoriaCreateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -103,13 +107,16 @@ class CategoriaCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         return reverse_lazy('categoria_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Categoría '{}' creada correctamente".format(str(self.object))
 
 # UD4.2.a
-class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class CategoriaUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Categoria
-    fields = ['nombre', 'descripcion']
+    # fields = ['nombre', 'descripcion']
+    
+    # UD4.4.e
+    form_class = CategoriaUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -122,7 +129,7 @@ class CategoriaUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('categoria_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Categoría '{}' actualizada correctamente".format(str(self.object))
 
 # UD4.2.a
@@ -136,10 +143,13 @@ class CategoriaDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar esta categoría?'
     
 # UD4.2.a
-class ProductoCreateView(PrecioMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
+class ProductoCreateView(SuccessMessageMixin, PrecioMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
     # model = Producto
     # fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
+    
+    # UD4.4.e
     form_class = ProductoCreateForm
+    
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
     titulo_creacion = 'Crear producto'
@@ -151,13 +161,16 @@ class ProductoCreateView(PrecioMixin, CreateUpdateContextMixin, CreateView): # U
         return reverse_lazy('producto_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Producto '{}' creado correctamente".format(str(self.object))
     
 # UD4.2.a
-class ProductoUpdateView(PrecioMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
+class ProductoUpdateView(SuccessMessageMixin, PrecioMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
     model = Producto
-    fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
+    # fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
+    
+    # UD4.4.e
+    form_class = ProductoUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -170,7 +183,7 @@ class ProductoUpdateView(PrecioMixin, CreateUpdateContextMixin, UpdateView): # U
         return reverse_lazy('producto_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Producto '{}' actualizado correctamente".format(str(self.object))
     
 # UD4.2.a
@@ -184,9 +197,12 @@ class ProductoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este producto?'
 
 # UD4.2.a
-class PedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
-    model = Pedido
-    fields = ['cliente', 'n_pedido', 'fecha', 'total']
+class PedidoCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d
+    # model = Pedido
+    # fields = ['cliente', 'n_pedido', 'fecha', 'total']
+    
+    # UD4.4.e
+    form_class = PedidoCreateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -199,13 +215,16 @@ class PedidoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         return reverse_lazy('pedido_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Pedido '{}' creado correctamente".format(str(self.object))
         
 # UD4.2.a
-class PedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class PedidoUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = Pedido
-    fields = ['cliente', 'n_pedido', 'fecha', 'total']
+    # fields = ['cliente', 'n_pedido', 'fecha', 'total']
+    
+    # UD4.4.e
+    form_class = PedidoUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -218,7 +237,7 @@ class PedidoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('pedido_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Pedido '{}' actualizado correctamente".format(str(self.object))
         
 # UD4.2.a
@@ -232,9 +251,12 @@ class PedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este pedido?'
     
 # UD4.2.a
-class DetallePedidoCreateView(CantidadMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
-    model = DetallePedido
-    fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
+class DetallePedidoCreateView(SuccessMessageMixin, CantidadMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d y UD4.2.h
+    # model = DetallePedido
+    # fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
+    
+    # UD4.4.e
+    form_class = DetallePedidoCreateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -247,13 +269,16 @@ class DetallePedidoCreateView(CantidadMixin, CreateUpdateContextMixin, CreateVie
         return reverse_lazy('detalle_pedido_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Detalle de pedido '{}' creado correctamente".format(str(self.object))
 
 # UD4.2.a
-class DetallePedidoUpdateView(CantidadMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
+class DetallePedidoUpdateView(SuccessMessageMixin, CantidadMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d y UD4.2.h
     model = DetallePedido
-    fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
+    # fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
+    
+    # UD4.4.e
+    form_class = DetallePedidoUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -266,7 +291,7 @@ class DetallePedidoUpdateView(CantidadMixin, CreateUpdateContextMixin, UpdateVie
         return reverse_lazy('detalle_pedido_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Detalle de pedido '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
@@ -280,9 +305,12 @@ class DetallePedidoDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este detalle de pedido?'
 
 # UD4.2.a
-class MovimientoInventarioCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
-    model = MovimientoInventario
-    fields = ['producto', 'tipo', 'fecha', 'cantidad']
+class MovimientoInventarioCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d
+    # model = MovimientoInventario
+    # fields = ['producto', 'tipo', 'fecha', 'cantidad']
+    
+    # UD4.4.e
+    form_class = MovimientoInventarioCreateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -295,13 +323,16 @@ class MovimientoInventarioCreateView(CreateUpdateContextMixin, CreateView): # UD
         return reverse_lazy('movimiento_inventario_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Movimiento de inventario '{}' creado correctamente".format(str(self.object))
 
 # UD4.2.a
-class MovimientoInventarioUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class MovimientoInventarioUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = MovimientoInventario
-    fields = ['producto', 'tipo', 'fecha', 'cantidad']
+    # fields = ['producto', 'tipo', 'fecha', 'cantidad']
+    
+    # UD4.4.e
+    form_class = MovimientoInventarioUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -314,7 +345,7 @@ class MovimientoInventarioUpdateView(CreateUpdateContextMixin, UpdateView): # UD
         return reverse_lazy('movimiento_inventario_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Movimiento de inventario '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a
@@ -328,9 +359,12 @@ class MovimientoInventarioDeleteView(DeleteMixin, DeleteView): # UD4.2.f
     mensaje_confirmacion = '¿Estás seguro de que deseas eliminar este movimiento de inventario?'
 
 # UD4.2.a
-class TipoMovimientoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
-    model = TipoMovimiento
-    fields = ['nombre', 'motivo']
+class TipoMovimientoCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateView): # UD4.2.d
+    # model = TipoMovimiento
+    # fields = ['nombre', 'motivo']
+    
+    # UD4.4.e
+    form_class = TipoMovimientoCreateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -343,13 +377,16 @@ class TipoMovimientoCreateView(CreateUpdateContextMixin, CreateView): # UD4.2.d
         return reverse_lazy('tipo_movimiento_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Tipo de movimiento '{}' creado correctamente".format(str(self.object))
 
 # UD4.2.a
-class TipoMovimientoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
+class TipoMovimientoUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateView): # UD4.2.d
     model = TipoMovimiento
-    fields = ['nombre', 'motivo']
+    # fields = ['nombre', 'motivo']
+    
+    # UD4.4.e
+    form_class = TipoMovimientoUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -362,7 +399,7 @@ class TipoMovimientoUpdateView(CreateUpdateContextMixin, UpdateView): # UD4.2.d
         return reverse_lazy('tipo_movimiento_update', kwargs={'pk': object.id})
 
     # UD4.4.a
-    def get_success_message(self):
+    def get_success_message(self, cleaned_data):
         return "Tipo de movimiento '{}' actualizado correctamente".format(str(self.object))
 
 # UD4.2.a

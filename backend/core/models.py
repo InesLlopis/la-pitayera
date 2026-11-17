@@ -38,7 +38,7 @@ class Producto(models.Model):
 class Pedido(models.Model):
     cliente = models.ForeignKey("billing.Cliente", on_delete=models.PROTECT)
     n_pedido = models.CharField(max_length=20, unique=True) # UD3.3.c
-    fecha = models.DateField(default=now, verbose_name='Fecha')
+    fecha = models.DateTimeField(default=now, verbose_name='Fecha')
     total = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"), verbose_name='Total')
 
     # UD3.3.c

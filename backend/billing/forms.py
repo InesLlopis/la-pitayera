@@ -71,9 +71,9 @@ class FacturaCreateForm(forms.ModelForm):
         fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
         
     # UD4.3.b
-    def clean_importe(self):
+    def clean_total(self):
         total = self.cleaned_data['total']
-        if total < 0:
+        if total <= 0:
             raise ValidationError("El importe no puede ser inferior a 0.00.")
         return total
     
@@ -111,15 +111,15 @@ class FacturaUpdateForm(forms.ModelForm):
         fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
         
         # UD4.3.b
-    def clean_importe(self):
+    def clean_total(self):
         total = self.cleaned_data['total']
-        if total < 0:
+        if total <= 0:
             raise ValidationError("El total no puede ser inferior a 0.00.")
         return total
     
     # UD4.4.c
     def __init__(self, *args, **kargs):
-        super(FacturaCreateForm, self).__init__(*args, **kargs)
+        super(FacturaUpdateForm, self).__init__(*args, **kargs)
         
         self.helper = FormHelper(self)
         self.helper.form_tag = False
@@ -154,7 +154,7 @@ class CobroCreateForm(forms.ModelForm):
         # UD4.3.b
     def clean_importe(self):
         importe = self.cleaned_data['importe']
-        if importe < 0:
+        if importe <= 0:
             raise ValidationError("El importe no puede ser inferior a 0.00.")
         return importe
     
@@ -188,7 +188,7 @@ class CobroUpdateForm(forms.ModelForm):
         # UD4.3.b
     def clean_importe(self):
         importe = self.cleaned_data['importe']
-        if importe < 0:
+        if importe <= 0:
             raise ValidationError("El importe no puede ser inferior a 0.00.")
         return importe
     
