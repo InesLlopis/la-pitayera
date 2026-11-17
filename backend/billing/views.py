@@ -11,7 +11,7 @@ from common.mixins import CreateUpdateContextMixin, DeleteMixin, CobroMixin, Ord
 from django.contrib.messages.views import SuccessMessageMixin
 
 # UD4.4.c
-from .forms import ClienteCreateForm, ClienteUpdateForm, FacturaCreateForm, FacturaUpdateForm, CobroCreateForm, CobroUpdateForm
+from .forms import ClienteCreateUpdateForm, FacturaCreateUpdateForm, CobroCreateUpdateForm
 
 
 class ClienteListView(OrderingByIdMixin, ListView): # UD4.2.i
@@ -58,7 +58,7 @@ class ClienteCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateVie
     # fields = ['nombre', 'apellidos', 'nif', 'email']
     
     # UD4.4.c
-    form_class = ClienteCreateForm
+    form_class = ClienteCreateUpdateForm
     # UD4.2.c
     template_name = 'common/base_create_update.html'
     titulo_creacion = 'Crear cliente'
@@ -79,7 +79,7 @@ class ClienteUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateVie
     # fields = ['nombre', 'apellidos', 'nif', 'email']
     
     # UD4.4.c
-    form_class = ClienteUpdateForm
+    form_class = ClienteCreateUpdateForm
     # UD4.2.c
     template_name = 'common/base_create_update.html'
     titulo_creacion = None
@@ -112,7 +112,7 @@ class FacturaCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateVie
     # fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
     
     # UD4.4.c
-    form_class = FacturaCreateForm
+    form_class = FacturaCreateUpdateForm
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
     titulo_creacion = 'Crear factura'
@@ -134,7 +134,7 @@ class FacturaUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateVie
     # fields = ['cliente', 'n_factura', 'concepto', 'fecha', 'total']
     
     # UD4.4.c
-    form_class = FacturaUpdateForm
+    form_class = FacturaCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -167,7 +167,7 @@ class CobroCreateView(SuccessMessageMixin, CobroMixin, CreateUpdateContextMixin,
     # fields = ['factura', 'fecha', 'importe']
     
     # UD4.4.c
-    form_class = CobroCreateForm
+    form_class = CobroCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -190,7 +190,7 @@ class CobroUpdateView(SuccessMessageMixin, CobroMixin, CreateUpdateContextMixin,
     # fields = ['factura', 'fecha', 'importe']
     
     # UD4.4.c
-    form_class = CobroUpdateForm
+    form_class = CobroCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'

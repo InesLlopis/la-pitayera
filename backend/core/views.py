@@ -11,7 +11,7 @@ from common.mixins import CreateUpdateContextMixin, DeleteMixin, PrecioMixin, Ca
 from django.contrib.messages.views import SuccessMessageMixin
 
 # UD4.4.e
-from .forms import CategoriaCreateForm, CategoriaUpdateForm, ProductoCreateForm, ProductoUpdateForm, PedidoCreateForm, PedidoUpdateForm, DetallePedidoCreateForm, DetallePedidoUpdateForm, TipoMovimientoCreateForm, TipoMovimientoUpdateForm, MovimientoInventarioCreateForm, MovimientoInventarioUpdateForm
+from .forms import CategoriaCreateUpdateForm, ProductoCreateUpdateForm, PedidoCreateUpdateForm, DetallePedidoCreateUpdateForm, TipoMovimientoCreateUpdateForm, MovimientoInventarioCreateUpdateForm
 
 # Create your views here.
 # UD3.7.a
@@ -65,26 +65,26 @@ class DetallePedidoDetailView(DetailView):
 # UD3.7.a
 class MovimientoInventarioListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = MovimientoInventario
-    template_name = 'core/movimientoinventario_list.html'
+    template_name = 'core/movimiento_inventario_list.html'
     # UD3.8.b
     paginate_by = 5
 
 # UD3.7.a
 class MovimientoInventarioDetailView(DetailView):
     model = MovimientoInventario
-    template_name = 'core/movimientoinventario_detail.html'
+    template_name = 'core/movimiento_inventario_detail.html'
 
 # UD3.7.a
 class TipoMovimientoListView(OrderingByIdMixin, ListView): # UD4.2.i
     model = TipoMovimiento
-    template_name = 'core/tipomovimiento_list.html'
+    template_name = 'core/tipo_movimiento_list.html'
     # UD3.8.b
     paginate_by = 5
 
 # UD3.7.a
 class TipoMovimientoDetailView(DetailView):
     model = TipoMovimiento
-    template_name = 'core/tipomovimiento_detail.html'
+    template_name = 'core/tipo_movimiento_detail.html'
     
 # UD4.2
 
@@ -94,7 +94,7 @@ class CategoriaCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateV
     # fields = ['nombre', 'descripcion']
     
     # UD4.4.e
-    form_class = CategoriaCreateForm
+    form_class = CategoriaCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -116,7 +116,7 @@ class CategoriaUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateV
     # fields = ['nombre', 'descripcion']
     
     # UD4.4.e
-    form_class = CategoriaUpdateForm
+    form_class = CategoriaCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -148,7 +148,7 @@ class ProductoCreateView(SuccessMessageMixin, PrecioMixin, CreateUpdateContextMi
     # fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
     
     # UD4.4.e
-    form_class = ProductoCreateForm
+    form_class = ProductoCreateUpdateForm
     
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -170,7 +170,7 @@ class ProductoUpdateView(SuccessMessageMixin, PrecioMixin, CreateUpdateContextMi
     # fields = ['nombre', 'sku', 'categoria', 'descripcion', 'precio']
     
     # UD4.4.e
-    form_class = ProductoUpdateForm
+    form_class = ProductoCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -202,7 +202,7 @@ class PedidoCreateView(SuccessMessageMixin, CreateUpdateContextMixin, CreateView
     # fields = ['cliente', 'n_pedido', 'fecha', 'total']
     
     # UD4.4.e
-    form_class = PedidoCreateForm
+    form_class = PedidoCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -224,7 +224,7 @@ class PedidoUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, UpdateView
     # fields = ['cliente', 'n_pedido', 'fecha', 'total']
     
     # UD4.4.e
-    form_class = PedidoUpdateForm
+    form_class = PedidoCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -256,7 +256,7 @@ class DetallePedidoCreateView(SuccessMessageMixin, CantidadMixin, CreateUpdateCo
     # fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
     
     # UD4.4.e
-    form_class = DetallePedidoCreateForm
+    form_class = DetallePedidoCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -278,7 +278,7 @@ class DetallePedidoUpdateView(SuccessMessageMixin, CantidadMixin, CreateUpdateCo
     # fields = ['pedido', 'producto', 'cantidad', 'precio_unitario']
     
     # UD4.4.e
-    form_class = DetallePedidoUpdateForm
+    form_class = DetallePedidoCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -310,7 +310,7 @@ class MovimientoInventarioCreateView(SuccessMessageMixin, CreateUpdateContextMix
     # fields = ['producto', 'tipo', 'fecha', 'cantidad']
     
     # UD4.4.e
-    form_class = MovimientoInventarioCreateForm
+    form_class = MovimientoInventarioCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -332,7 +332,7 @@ class MovimientoInventarioUpdateView(SuccessMessageMixin, CreateUpdateContextMix
     # fields = ['producto', 'tipo', 'fecha', 'cantidad']
     
     # UD4.4.e
-    form_class = MovimientoInventarioUpdateForm
+    form_class = MovimientoInventarioCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
@@ -364,7 +364,7 @@ class TipoMovimientoCreateView(SuccessMessageMixin, CreateUpdateContextMixin, Cr
     # fields = ['nombre', 'motivo']
     
     # UD4.4.e
-    form_class = TipoMovimientoCreateForm
+    form_class = TipoMovimientoCreateUpdateForm
 
     # UD4.2.c    
     template_name = 'common/base_create_update.html'
@@ -386,7 +386,7 @@ class TipoMovimientoUpdateView(SuccessMessageMixin, CreateUpdateContextMixin, Up
     # fields = ['nombre', 'motivo']
     
     # UD4.4.e
-    form_class = TipoMovimientoUpdateForm
+    form_class = TipoMovimientoCreateUpdateForm
 
     # UD4.2.c
     template_name = 'common/base_create_update.html'
