@@ -7,7 +7,7 @@
     <h1>Lista de Tipos de movimientos</h1>
     <div><a href="{% url 'tipo_movimiento_create' %}" class="btn btn-success">Crear</a></div>
     <ul class="list-group mt-3">
-        {% comment %} UD3.8.b {% endcomment %}        
+        {% comment %} UD3.8.b {% endcomment %}
         {% for tipomovimiento in page_obj %}
         <li class="list-group-item">
             <a href="{% url 'tipo_movimiento_detail' pk=tipomovimiento.id %}">
@@ -35,5 +35,11 @@
         <a href="?ordering={{ request.GET.ordering }}&page={{ page_obj.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
+    <div>
+        <a href="{% url 'panel' %}" class="btn btn-secondary">
+            Volver
+        </a>
+    </div>
+
 </div>
 {% endblock main_content %}

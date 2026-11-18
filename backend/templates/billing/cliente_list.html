@@ -36,5 +36,11 @@
         <a href="?ordering={{ request.GET.ordering }}&page={{ page_obj.paginator.num_pages }}">Última</a>
         {% endif %}
     </div>
+    <div>
+        <a href="{% url 'panel' %}" class="btn btn-secondary">
+            Volver
+        </a>
+    </div>
+
 </div>
 {% endblock main_content %}
