@@ -1,0 +1,27 @@
+{% extends 'common/base.html' %}
+{% comment %}UD5.2{% endcomment %}
+{% block content %}
+<div class="container">
+    <h1>Iniciar sesión</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div class="mb-3">
+            <label for="{{ form.username.id_for_label }}">Correo electrónico</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.password.id_for_label }}">Contraseña</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+</div>
+{% endblock %}

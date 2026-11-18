@@ -22,6 +22,8 @@ from common import views as common_views
 from billing import views as billing_views
 from core import views as core_views
 
+from login import views as login_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -49,8 +51,6 @@ urlpatterns = [
     path('cobro_create/', billing_views.CobroCreateView.as_view(), name='cobro_create'),
     path('cobro_update/<int:pk>/', billing_views.CobroUpdateView.as_view(), name='cobro_update'),
     path('cobro_delete/<int:pk>/', billing_views.CobroDeleteView.as_view(), name='cobro_delete'),
-
-
 
     # UD3.7.b
     path('categoria_list/', core_views.CategoriaListView.as_view(),name="categoria_list"),
@@ -95,6 +95,9 @@ urlpatterns = [
     path('tipo_movimiento_create/', core_views.TipoMovimientoCreateView.as_view(), name='tipo_movimiento_create'),
     path('tipo_movimiento_update/<int:pk>/', core_views.TipoMovimientoUpdateView.as_view(), name='tipo_movimiento_update'),
     path('tipo_movimiento_delete/<int:pk>/', core_views.TipoMovimientoDeleteView.as_view(), name='tipo_movimiento_delete'),
+    
+    # UD5.2
+    path('login/', login_views.LoginFormView.as_view(), name='login'),
 ]
 
 if settings.DEBUG:

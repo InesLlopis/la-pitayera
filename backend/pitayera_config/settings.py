@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     
     # UD5.1.a
     'usuarios',
+    
+    # UD5.2
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +162,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # UD5.1.a
 AUTH_USER_MODEL = 'usuarios.MyUser'
+
+# UD5.2
+LOGIN_REDIRECT_URL = 'panel'
