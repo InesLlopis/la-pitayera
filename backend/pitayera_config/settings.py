@@ -165,3 +165,4 @@ AUTH_USER_MODEL = 'usuarios.MyUser'
 
 # UD5.2
 LOGIN_REDIRECT_URL = 'panel'
+LOGOUT_REDIRECT_URL = 'home'

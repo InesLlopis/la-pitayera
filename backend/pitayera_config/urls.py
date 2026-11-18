@@ -22,7 +22,9 @@ from common import views as common_views
 from billing import views as billing_views
 from core import views as core_views
 
+# UD5.2
 from login import views as login_views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -98,6 +100,7 @@ urlpatterns = [
     
     # UD5.2
     path('login/', login_views.LoginFormView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
 
 if settings.DEBUG:
